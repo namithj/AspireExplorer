@@ -1,27 +1,32 @@
 {
-    "name": "aspirepress/aspireexplorer",
-    "description": "AspirePress Repository browser.",
-    "type": "wordpress-plugin",
-    "license": "GPLv2",
-    "authors": [
-        {
-            "name": "AspirePress"
-        }
-    ],
-    "require": {
-        "php": ">=7.4.0"
-    },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "3.10.3",
-        "wp-coding-standards/wpcs": "~3.1.0"
-    },
-    "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
-    },
-    "scripts": {
-        "format": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --report=summary,source",
-        "lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --report=summary,source"
-    }
+	"name": "aspirepress/aspireexplorer",
+	"description": "AspirePress Repository browser.",
+	"type": "wordpress-plugin",
+	"license": "GPLv2",
+	"authors": [
+		{
+			"name": "AspirePress"
+		}
+	],
+	"require": {
+		"php": ">=7.4.0"
+	},
+	"require-dev": {
+		"squizlabs/php_codesniffer": "3.10.3",
+		"wp-coding-standards/wpcs": "~3.1.0"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		},
+		"optimize-autoloader": true,
+		"sort-packages": true
+	},
+	"scripts": {
+		"format": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --report=summary,source",
+		"lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --report=summary,source",
+		"scss-watch": "sass --watch assets/css/aspire-explorer.scss:assets/css/aspire-explorer.css"
+	},
+	"minimum-stability": "stable",
+	"prefer-stable": true
 }

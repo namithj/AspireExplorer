@@ -1,0 +1,140 @@
+.single-plugin-card {
+	max-width: 1200px !important;
+	box-sizing: border-box;
+	gap: 16px;
+	font-size: 16px;
+	line-height: 20px;
+	color: #333333;
+	margin: 0 auto;
+
+	banner {
+		display: block;
+		margin: 0 0 20px;
+
+		img {
+			width: 100%;
+			height: auto;
+			max-height: 388px;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+
+	header {
+		display: flex;
+		gap: 16px;
+		margin: 0 0 30px;
+
+		.entry-thumbnail {
+			width: 96px;
+
+			.plugin-icon {
+				width: 96px;
+				height: 96px;
+			}
+		}
+
+		.entry-title {
+			flex: 1;
+
+			.plugin-title {
+				margin: 0 0 5px;
+				font-size: 26px;
+				line-height: 32px;
+				font-weight: 600;
+
+				a {
+					color: #6eb9e3;
+					text-decoration: none;
+				}
+			}
+			.plugin-author {
+				margin: 0;
+				font-size: 18px;
+				line-height: 20px;
+			}
+			.plugin-version {
+				margin: 0;
+				font-size: 18px;
+				line-height: 20px;
+			}
+		}
+
+		.entry-download {
+			width: 140px;
+			a.button {
+				width: 100%;
+				padding: 10px;
+				background-color: #6eb9e3;
+				color: #fff;
+				border: none;
+				border-radius: 4px;
+				font-size: 16px;
+				line-height: 20px;
+				text-align: center;
+				text-decoration: none;
+				margin: 0;
+				vertical-align: bottom;
+				display: inline-block;
+				box-sizing: border-box;
+			}
+		}
+	}
+
+	article {
+		margin: 0 0 30px;
+
+		input[type="radio"] {
+			display: none;
+		}
+
+		.accordion-item {
+			border-top: 1px solid #ccc;
+		}
+
+		.accordion-item:last-child {
+			border-bottom: 1px solid #ccc;
+		}
+
+		input {
+			display: none;
+		}
+
+		label {
+			display: block;
+			padding: 1em;
+			background: #f5f5f5;
+			font-weight: bold;
+			cursor: pointer;
+			transition: background 0.3s ease;
+			border-left: 1px solid #ddd;
+			border-right: 1px solid #ddd;
+		}
+
+		label:hover {
+			background: #e0e0e0;
+		}
+
+		.accordion-content {
+			max-height: 0;
+			overflow: hidden;
+			background: #fff;
+			transition: max-height 0.3s ease;
+			padding: 0;
+
+			img {
+				max-width: 90%;
+				margin: 0 auto;
+				display: block;
+			}
+		}
+
+		input:checked ~ .accordion-content {
+			max-height: 500px;
+			overflow-y: scroll;
+			padding: 20px 20px 30px;
+			border-left: 1px solid #ddd;
+			border-right: 1px solid #ddd;
+		}
+	}
+}

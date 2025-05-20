@@ -1,0 +1,252 @@
+.plugin-search-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px !important;
+  box-sizing: border-box;
+  gap: 16px;
+  font-size: 16px;
+  line-height: 20px;
+  color: #333333;
+  margin: 0 auto;
+  padding: 0;
+}
+ul li.plugin-card {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: calc(50% - 8px);
+  padding: 20px 20px 10px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+}
+ul li.plugin-card header {
+  display: flex;
+  gap: 16px;
+}
+ul li.plugin-card header .entry-thumbnail {
+  width: 96px;
+}
+ul li.plugin-card header .entry-thumbnail .plugin-icon {
+  width: 96px;
+  height: 96px;
+}
+ul li.plugin-card header .entry-title {
+  flex: 1;
+}
+ul li.plugin-card header .entry-title .plugin-title {
+  margin: 0 0 5px;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 600;
+}
+ul li.plugin-card header .entry-title .plugin-title a {
+  color: #6eb9e3;
+  text-decoration: none;
+}
+ul li.plugin-card header .entry-title .plugin-author {
+  margin: 0;
+  font-size: 16px;
+  line-height: 20px;
+}
+ul li.plugin-card header .entry-title .plugin-version {
+  margin: 0;
+  font-size: 16px;
+  line-height: 20px;
+}
+ul li.plugin-card .entry-excerpt {
+  font-size: 16px;
+  line-height: 24px;
+}
+ul li.plugin-card footer .active-installs {
+  font-size: 14px;
+  line-height: 18px;
+}
+ul li.plugin-card footer .plugin-tags {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ul li.plugin-card footer .plugin-tags .plugin-tag {
+  background-color: #182b49;
+  color: #ffffff;
+  padding: 3px 10px 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 600;
+}
+
+.pagination-wrapper {
+  max-width: 1200px !important;
+  margin: 0 auto;
+}
+.pagination-wrapper ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 1em 0;
+  position: relative;
+}
+.pagination-wrapper ul li {
+  margin: 0 0.25em;
+  display: inline-block;
+}
+.pagination-wrapper ul li a,
+.pagination-wrapper ul li span {
+  display: inline-block;
+  padding: 0.4em 0.75em;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  color: #333;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+.pagination-wrapper ul li a.current,
+.pagination-wrapper ul li span.current {
+  background: #333;
+  color: #fff;
+  border-color: #333;
+}
+.pagination-wrapper ul li a.dots,
+.pagination-wrapper ul li span.dots {
+  background: none;
+  border: none;
+}
+
+.single-plugin-card {
+  max-width: 1200px !important;
+  box-sizing: border-box;
+  gap: 16px;
+  font-size: 16px;
+  line-height: 20px;
+  color: #333333;
+  margin: 0 auto;
+}
+.single-plugin-card banner {
+  display: block;
+  margin: 0 0 20px;
+}
+.single-plugin-card banner img {
+  width: 100%;
+  height: auto;
+  max-height: 388px;
+  object-fit: cover;
+  object-position: center;
+}
+.single-plugin-card header {
+  display: flex;
+  gap: 16px;
+  margin: 0 0 30px;
+}
+.single-plugin-card header .entry-thumbnail {
+  width: 96px;
+}
+.single-plugin-card header .entry-thumbnail .plugin-icon {
+  width: 96px;
+  height: 96px;
+}
+.single-plugin-card header .entry-title {
+  flex: 1;
+}
+.single-plugin-card header .entry-title .plugin-title {
+  margin: 0 0 5px;
+  font-size: 26px;
+  line-height: 32px;
+  font-weight: 600;
+}
+.single-plugin-card header .entry-title .plugin-title a {
+  color: #6eb9e3;
+  text-decoration: none;
+}
+.single-plugin-card header .entry-title .plugin-author {
+  margin: 0;
+  font-size: 18px;
+  line-height: 20px;
+}
+.single-plugin-card header .entry-title .plugin-version {
+  margin: 0;
+  font-size: 18px;
+  line-height: 20px;
+}
+.single-plugin-card header .entry-download {
+  width: 140px;
+}
+.single-plugin-card header .entry-download a.button {
+  width: 100%;
+  padding: 10px;
+  background-color: #6eb9e3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0;
+  vertical-align: bottom;
+  display: inline-block;
+  box-sizing: border-box;
+}
+.single-plugin-card article {
+  margin: 0 0 30px;
+}
+.single-plugin-card article input[type=radio] {
+  display: none;
+}
+.single-plugin-card article .accordion-item {
+  border-top: 1px solid #ccc;
+}
+.single-plugin-card article .accordion-item:last-child {
+  border-bottom: 1px solid #ccc;
+}
+.single-plugin-card article input {
+  display: none;
+}
+.single-plugin-card article label {
+  display: block;
+  padding: 1em;
+  background: #f5f5f5;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+.single-plugin-card article label:hover {
+  background: #e0e0e0;
+}
+.single-plugin-card article .accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  background: #fff;
+  transition: max-height 0.3s ease;
+  padding: 0;
+}
+.single-plugin-card article .accordion-content img {
+  max-width: 90%;
+  margin: 0 auto;
+  display: block;
+}
+.single-plugin-card article input:checked ~ .accordion-content {
+  max-height: 500px;
+  overflow-y: scroll;
+  padding: 20px 20px 30px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+/*# sourceMappingURL=aspire-explorer.css.map */
