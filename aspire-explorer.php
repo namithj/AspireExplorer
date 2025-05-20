@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AspireExplorer - AspirePress Repository browser.
  *
@@ -33,11 +34,23 @@ if ( ! defined( 'AE_VERSION' ) ) {
 }
 
 
-add_action( 'plugins_loaded', 'define_constant' );
-function define_constant() {
-	if ( ! defined( 'AE_PATH' ) ) {
-		define( 'AE_PATH', dirname( plugin_basename( __FILE__ ) ) );
+add_action(
+	'plugins_loaded',
+	function () {
+		if ( ! defined( 'AE_DIR_URL' ) ) {
+			define( 'AE_DIR_URL', plugin_basename( __FILE__ ) );
+		}
+		if ( ! defined( 'AE_DIR_PATH' ) ) {
+			define( 'AE_DIR_PATH', __DIR__ );
+		}
+		AspireExplorer\Controller\Main::get_instance();
 	}
-}
+);
 
 require_once __DIR__ . '/includes/autoload.php';
+
+/**
+ * Register activation/deactivation hooks.
+ */
+register_activation_hook( __FILE__, [ 'AspireExplorer\Controller\Main', 'on_activate' ] );
+register_deactivation_hook( __FILE__, [ 'AspireExplorer\Controller\Main', 'on_deactivate' ] );
