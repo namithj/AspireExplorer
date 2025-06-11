@@ -67,9 +67,9 @@ if ( isset( $sections['description'] ) ) {
 
 				foreach ( $sections as $section => $content ) {
 					echo '<div class="accordion-item" id="accordion-item-' . esc_attr( $section ) . '">';
-						echo '<input type="radio" name="accordions" id="section-' . esc_attr( $section ) . '" ' . checked( $section, array_key_first( $sections ), false ) . '>';
-						echo '<label for="section-' . esc_attr( $section ) . '">' . esc_html( ucfirst( $section ) ) . '</label>';
-						echo '<div class="accordion-content" id="accordion-content-' . esc_attr( $section ) . '">' . wp_kses_post( $content ) . '</div>';
+					echo '<input type="radio" name="accordions" id="section-' . esc_attr( $section ) . '" ' . checked( $section, array_key_first( $sections ), false ) . '>';
+					echo '<label for="section-' . esc_attr( $section ) . '" aria-label="' . esc_attr( sprintf( __( '%s section', 'aspireexplorer' ), ucfirst( $section ) ) ) . '">' . esc_html( ucfirst( $section ) ) . '</label>';
+					echo '<div class="accordion-content" id="accordion-content-' . esc_attr( $section ) . '" aria-labelledby="section-' . esc_attr( $section ) . '">' . wp_kses_post( $content ) . '</div>';
 					echo '</div>';
 				}
 			}
@@ -93,7 +93,8 @@ if ( isset( $sections['description'] ) ) {
 					if ( is_array( $value ) ) {
 						$value = implode( ', ', $value );
 					}
-					echo '<li class="plugin-meta-item"><strong>' . esc_html( ucfirst( str_replace( '_', ' ', $key ) ) ) . ':</strong> ' . esc_html( $value ) . '</li>';
+					$label = esc_html( ucfirst( str_replace( '_', ' ', $key ) ) );
+					echo '<li class="plugin-meta-item"><strong><span class="screen-reader-text">' . sprintf( esc_html__( '%s:', 'aspireexplorer' ), $label ) . '</span>' . $label . ':</strong> ' . esc_html( $value ) . '</li>';
 				}
 				?>
 			</ul>
@@ -109,7 +110,7 @@ if ( isset( $sections['description'] ) ) {
 				$average = $total > 0 ? round( $sum / $total, 1 ) : 0;
 				?>
 				<div class="plugin-rating-summary">
-					<strong><?php echo esc_html( $average ); ?> out of 5 stars.</strong>
+					<strong><span class="screen-reader-text"><?php echo esc_html__( 'Average rating:', 'aspireexplorer' ); ?></span><?php echo esc_html( $average ); ?> <?php echo esc_html__( 'out of 5 stars.', 'aspireexplorer' ); ?></strong>
 				</div>
 				<ul class="plugin-ratings-list">
 					<?php
@@ -117,10 +118,10 @@ if ( isset( $sections['description'] ) ) {
 						$count = isset( $ratings[ $i ] ) ? (int) $ratings[ $i ] : 0;
 						echo '<li class="plugin-rating-row">';
 						for ( $j = 1; $j <= 5; $j++ ) {
-							echo '<span class="dashicons dashicons-star' . ( $j <= $i ? '-filled' : '-empty' ) . '"></span>';
+							echo '<span class="dashicons dashicons-star' . ( $j <= $i ? '-filled' : '-empty' ) . '" aria-hidden="true"></span>';
 						}
 						echo '<span class="plugin-rating-bar"><span class="plugin-rating-bar-inner" style="width:' . ( $total > 0 ? esc_attr( round( ( $count / $total ) * 100 ) ) : 0 ) . '%"></span></span>';
-						echo '<span class="plugin-rating-absolute">' . esc_html( $count ) . ' ratings</span>';
+						echo '<span class="plugin-rating-absolute"><span class="screen-reader-text">' . esc_html__( 'Number of ratings:', 'aspireexplorer' ) . ' </span>' . esc_html( $count ) . ' ' . esc_html__( 'ratings', 'aspireexplorer' ) . '</span>';
 						echo '</li>';
 					}
 					?>

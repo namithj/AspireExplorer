@@ -1,8 +1,15 @@
 .archive-plugin-card {
 	max-width: 1200px !important;
-	margin: 32px auto 0 auto;
+	margin: 12px auto 0 auto;
 
-	ul {
+	.plugin-results-count {
+		font-size: 16px;
+		line-height: 1.5;
+		color: #555;
+		margin-bottom: 16px;
+	}
+
+	.plugin-results {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 32px;
@@ -12,7 +19,7 @@
 		margin: 0;
 		padding: 0;
 
-		li.plugin-card {
+		.plugin-card {
 			background: #fff;
 			border: 1.5px solid #e3e6ea;
 			border-radius: 12px;
@@ -244,16 +251,16 @@
 	}
 
 	@media (max-width: 1200px) {
-		ul {
+		.plugin-results {
 			gap: 18px;
 		}
 	}
 
 	@media (max-width: 992px) {
-		ul {
+		.plugin-results {
 			gap: 20px;
 
-			li.plugin-card {
+			.plugin-card {
 				width: 100%;
 				padding: 22px 12px 10px;
 			}
@@ -263,10 +270,10 @@
 	@media (max-width: 768px) {
 		padding: 16px 2vw 8px 2vw;
 
-		ul {
+		.plugin-results {
 			gap: 10px;
 
-			li.plugin-card {
+			.plugin-card {
 				width: 100%;
 				padding: 12px 6px 6px;
 
@@ -299,10 +306,10 @@
 	@media (max-width: 576px) {
 		padding: 0 1vw;
 
-		ul {
+		.plugin-results {
 			gap: 4px;
 
-			li.plugin-card {
+			.plugin-card {
 				padding: 7px 2px 4px;
 
 				.entry-excerpt {
