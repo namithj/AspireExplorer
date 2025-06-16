@@ -2,17 +2,17 @@
 $target_page_slug = $args['target_page_slug'] ?? '';
 $plugins_result   = $args['plugins_result'] ?? [];
 $current_page     = $args['current_page'] ?? 1;
+$total_results      = $args['total_results'] ?? 0;
 $total_pages      = $args['total_pages'] ?? 1;
 ?>
 <main class="archive-plugin-card">
 	<div class="plugin-results-count">
 		<p id="plugin-results-count-text" aria-hidden="true">
 			<?php
-			$plugin_count = count( $plugins_result );
 			printf(
 				/* translators: %s: number of plugins found */
-				esc_html( _n( '%s Plugin Found.', '%s Plugins Found.', $plugin_count, 'aspireexplorer' ) ),
-				esc_html( $plugin_count )
+				esc_html( _n( '%s Plugin Found.', '%s Plugins Found.', $total_results, 'aspireexplorer' ) ),
+				esc_html( $total_results )
 			);
 			?>
 		</p>
@@ -24,11 +24,11 @@ $total_pages      = $args['total_pages'] ?? 1;
 					_n(
 						'%s plugin found in the results list below.',
 						'%s plugins found in the results list below.',
-						$plugin_count,
+						$total_results,
 						'aspireexplorer'
 					)
 				),
-				esc_html( $plugin_count )
+				esc_html( $total_results )
 			);
 			?>
 		</span>
