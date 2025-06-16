@@ -129,15 +129,16 @@ class Themes extends \AspireExplorer\Model\Singleton {
 			return ob_get_clean();
 		}
 
-		//echo '<pre>'; print_r($api_response->themes[0]); echo '</pre>';
+		//echo '<pre>'; print_r( $api_response ); echo '</pre>';
 		//$theme_info = new \AspireExplorer\Model\ThemeInfo( $api_response->themes[0] );
-		//echo '<pre>'; print_r($theme_info); echo '</pre>';
+		//echo '<pre>'; print_r( $theme_info ); echo '</pre>';
 		Utilities::include_file(
 			'themes/archive/themes.php',
 			[
 				'target_page_slug' => $this->target_page_slug,
 				'themes_result'    => $api_response->themes,
 				'current_page'     => $search_args['page'],
+				'total_results'    => $api_response->info['results'],
 				'total_pages'      => ceil( $api_response->info['results'] / $search_args['per_page'] ),
 			]
 		);

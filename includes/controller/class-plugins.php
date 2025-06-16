@@ -139,6 +139,7 @@ class Plugins extends \AspireExplorer\Model\Singleton {
 				'target_page_slug' => $this->target_page_slug,
 				'plugins_result'   => $api_response->plugins,
 				'current_page'     => $search_args['page'],
+				'total_results'    => $api_response->info['results'],
 				'total_pages'      => ceil( $api_response->info['results'] / $search_args['per_page'] ),
 			]
 		);

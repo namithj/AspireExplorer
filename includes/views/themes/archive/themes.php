@@ -2,17 +2,17 @@
 $target_page_slug = $args['target_page_slug'] ?? '';
 $themes_result    = $args['themes_result'] ?? [];
 $current_page     = $args['current_page'] ?? 1;
+$total_results      = $args['total_results'] ?? 0;
 $total_pages      = $args['total_pages'] ?? 1;
 ?>
 <main class="archive-theme-card">
 	<div class="theme-results-count">
 		<p id="theme-results-count-text" aria-hidden="true">
 			<?php
-			$theme_count = count( $themes_result );
 			printf(
 				/* translators: %s: number of themes found */
-				esc_html( _n( '%s Theme Found.', '%s Themes Found.', $theme_count, 'aspireexplorer' ) ),
-				esc_html( $theme_count )
+				esc_html( _n( '%s Theme Found.', '%s Themes Found.', $total_results, 'aspireexplorer' ) ),
+				esc_html( $total_results )
 			);
 			?>
 		</p>
@@ -24,11 +24,11 @@ $total_pages      = $args['total_pages'] ?? 1;
 					_n(
 						'%s theme found in the results list below.',
 						'%s themes found in the results list below.',
-						$theme_count,
+						$total_results,
 						'aspireexplorer'
 					)
 				),
-				esc_html( $theme_count )
+				esc_html( $total_results )
 			);
 			?>
 		</span>
