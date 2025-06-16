@@ -80,7 +80,9 @@ if ( empty( $plugin_icon ) ) {
 		<div class="entry-tags">
 			<ul class="plugin-tags">
 				<?php
-				foreach ( $plugin_info->get_tags() as $plugin_tag ) {
+				$tags = $plugin_info->get_tags();
+				$tags = array_slice( $tags, 0, 5 );
+				foreach ( $tags as $plugin_tag ) {
 					echo '<li class="plugin-tag"><span class="screen-reader-text">' . esc_html__( 'Tag:', 'aspireexplorer' ) . ' </span><span aria-label="' . esc_attr__( 'Tag', 'aspireexplorer' ) . ': ' . esc_attr( $plugin_tag ) . '">' . esc_html( $plugin_tag ) . '</span></li>';
 				}
 				?>
