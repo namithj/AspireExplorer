@@ -83,7 +83,8 @@ class Themes extends \AspireExplorer\Model\Singleton {
 			return $this->single_the_content( $GLOBALS['theme_slug'] );
 		} else {
 			$search_keyword = isset( $_GET['keyword'] ) ? sanitize_text_field( $_GET['keyword'] ) : '';
-			return $this->archive_the_content( $search_keyword );
+			$tags           = isset( $_GET['tag'] ) ? array_map( 'sanitize_text_field', (array) $_GET['tag'] ) : [];
+			return $this->archive_the_content( $search_keyword, $tags );
 		}
 	}
 
@@ -92,7 +93,7 @@ class Themes extends \AspireExplorer\Model\Singleton {
 	 *
 	 * @return string The content to be displayed.
 	 */
-	private function archive_the_content( $search_keyword ) {
+	private function archive_the_content( $search_keyword, $tags = [] ) {
 		ob_start();
 
 		Utilities::include_file(
@@ -112,6 +113,10 @@ class Themes extends \AspireExplorer\Model\Singleton {
 			$search_args['search'] = $search_keyword;
 		} else {
 			$search_args['browse'] = 'popular';
+		}
+
+		if ( ! empty( $tags ) && is_array( $tags ) ) {
+			$search_args['tag'] = $tags;
 		}
 
 		$api_response = \themes_api(

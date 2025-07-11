@@ -2,7 +2,7 @@
 $target_page_slug = $args['target_page_slug'] ?? '';
 $themes_result    = $args['themes_result'] ?? [];
 $current_page     = $args['current_page'] ?? 1;
-$total_results      = $args['total_results'] ?? 0;
+$total_results    = $args['total_results'] ?? 0;
 $total_pages      = $args['total_pages'] ?? 1;
 ?>
 <main class="archive-theme-card">
@@ -33,6 +33,7 @@ $total_pages      = $args['total_pages'] ?? 1;
 			?>
 		</span>
 	</div>
+
 	<div class="theme-results">
 		<?php
 		foreach ( $themes_result as $theme_result ) {

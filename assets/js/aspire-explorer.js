@@ -1,6 +1,7 @@
 jQuery(document).ready(function () {
 	new AeLightbox();
-	if( jQuery('#not-found').length !== 0 ) {
+	new AeSearchForm();
+	if (jQuery('#not-found').length !== 0) {
 		new FallingText({
 			container: document.getElementById('not-found'),
 			text: 'No Plugins Found',
@@ -9,6 +10,32 @@ jQuery(document).ready(function () {
 		});
 	}
 });
+
+class AeSearchForm {
+	constructor() {
+		this.form = jQuery('.theme-search-form');
+		this.filtersBtn = this.form.find('.filters-btn');
+		this.filtersSection = jQuery('.theme-search-filters');
+		this.bindEvents();
+	}
+
+	bindEvents() {
+		this.filtersBtn.on('click', (e) => {
+			e.preventDefault();
+			this.toggleFiltersSection();
+		});
+	}
+
+	toggleFiltersSection() {
+		if (this.filtersSection.hasClass('active')) {
+			this.filtersBtn.removeClass('active');
+			this.filtersSection.removeClass('active');
+		} else {
+			this.filtersBtn.addClass('active');
+			this.filtersSection.addClass('active');
+		}
+	}
+}
 
 class AeLightbox {
 	constructor() {
