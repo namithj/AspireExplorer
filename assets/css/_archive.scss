@@ -134,8 +134,8 @@
 			footer {
 				display: flex;
 				flex-wrap: wrap;
-				justify-content: space-between;
-				align-items: flex-end;
+				justify-content: flex-end;
+				align-items: center;
 				gap: 18px;
 				margin-top: 5px;
 				padding-top: 14px;
@@ -145,7 +145,7 @@
 					color: #192b48;
 					font-weight: 700;
 					background: none;
-					margin: 0 0 0 0;
+					margin: 0 auto 0 0;
 					letter-spacing: 0.01em;
 					transition: background 0.2s;
 					display: flex;
@@ -160,7 +160,8 @@
 				}
 
 				.entry-preview,
-				.entry-download {
+				.entry-download,
+				.entry-add-to-cart {
 					margin: 0;
 
 					a.button {
@@ -196,6 +197,31 @@
 							&:hover {
 								background-color: #4fa3d1;
 							}
+						}
+					}
+				}
+
+				.entry-add-to-cart {
+					button {
+						background: #6eb9e3;
+						color: #fff;
+						border: none;
+						border-radius: 4px;
+						padding: 8px 18px;
+						font-size: 1em;
+						font-weight: 600;
+						box-shadow: 0 1px 4px rgba(110, 185, 227, 0.1);
+						transition: background 0.2s;
+						cursor: pointer;
+
+						&:hover {
+							background: #005177;
+							color: #fff;
+						}
+
+						.dashicons {
+							font-size: 1.2em;
+							margin-right: 4px;
 						}
 					}
 				}

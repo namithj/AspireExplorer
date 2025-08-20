@@ -4,8 +4,11 @@
 .phpunit.result.cache
 /phpunit.xml
 /vendor/*
+/node_modules/*
 .cache/*
 .DS_Store
+composer.lock
+package-lock.json
 
 # Track placeholders so that empty directories stay in the repo.
 !.gitkeep

@@ -1,0 +1,13 @@
+{
+  "name": "aspire-explorer",
+  "version": "1.0.0",
+  "description": "AspirePress Repository browser.",
+  "scripts": {
+    "build-css": "npx sass assets/css/aspire-explorer.scss assets/css/aspire-explorer.css",
+    "scss-watch": "npx sass --watch assets/css/aspire-explorer.scss:assets/css/aspire-explorer.css"
+  },
+  "devDependencies": {
+    "onchange": "^7.1.0",
+    "sass": "^1.69.5"
+  }
+}

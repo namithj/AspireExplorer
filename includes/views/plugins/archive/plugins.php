@@ -2,7 +2,7 @@
 $target_page_slug = $args['target_page_slug'] ?? '';
 $plugins_result   = $args['plugins_result'] ?? [];
 $current_page     = $args['current_page'] ?? 1;
-$total_results      = $args['total_results'] ?? 0;
+$total_results    = $args['total_results'] ?? 0;
 $total_pages      = $args['total_pages'] ?? 1;
 ?>
 <main class="archive-plugin-card">
