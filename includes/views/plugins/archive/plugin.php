@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var AspireExplorer\Model\PluginInfo plugin_info.
  */
@@ -65,6 +66,12 @@ if ( empty( $plugin_icon ) ) {
 				<?php
 			}
 			?>
+		</p>
+		<p class="entry-add-to-cart">
+			<button class="button button-secondary" data-slug="<?php echo esc_attr( $plugin_info->get_slug() ); ?>" aria-label="<?php esc_attr_e( 'Add to cart', 'aspireexplorer' ); ?> <?php echo esc_attr( $plugin_info->get_name() ); ?> <?php esc_attr_e( 'plugin', 'aspireexplorer' ); ?>">
+				<span class="dashicons dashicons-cart" aria-hidden="true"></span>
+				<span class="screen-reader-text"><?php esc_html_e( 'Add to cart', 'aspireexplorer' ); ?></span>
+			</button>
 		</p>
 		<p class="entry-download">
 			<a href="<?php echo esc_url( $plugin_info->get_download_link() ); ?>"
