@@ -15,7 +15,7 @@ $target_page_slug = $args['target_page_slug'] ?? '';
 if ( ! $theme_info ) {
 	return;
 }
-$theme_url        = home_url( '/' . $target_page_slug . '/' . $theme_info->get_slug() );
+$theme_url        = home_url( '/' . $target_page_slug . '/' . $theme_info->get_slug() . '/' );
 $theme_screenshot = $theme_info->get_screenshot_url();
 if ( empty( $theme_screenshot ) ) {
 	$theme_screenshot = AE_DIR_URL . 'assets/images/default-banner.svg';
@@ -23,10 +23,8 @@ if ( empty( $theme_screenshot ) ) {
 ?>
 <li class="theme-card">
 	<div class="theme-banner">
-		<a href="<?php echo esc_url( $theme_url ); ?>"
-			aria-label="<?php echo esc_attr( $theme_info->get_name() ); ?> <?php esc_attr_e( 'theme details', 'aspireexplorer' ); ?>"
-			title="<?php echo esc_attr( $theme_info->get_name() ); ?>">
-			<img src="<?php echo esc_url( $theme_info->get_screenshot_url() ); ?>"
+		<a href="<?php echo esc_url( $theme_url ); ?>">
+			<img src="<?php echo esc_url( $theme_screenshot ); ?>"
 				alt="<?php echo esc_attr( $theme_info->get_name() ); ?> <?php esc_attr_e( 'theme screenshot', 'aspireexplorer' ); ?>"
 				loading="lazy" />
 		</a>
@@ -76,10 +74,8 @@ if ( empty( $theme_screenshot ) ) {
 			<a href="<?php echo esc_url( $theme_info->get_download_link() ); ?>"
 				class="button button-primary"
 				target="_blank"
-				rel="noopener noreferrer"
-				aria-label="<?php esc_attr_e( 'Download', 'aspireexplorer' ); ?> <?php echo esc_attr( $theme_info->get_name() ); ?> <?php esc_attr_e( 'theme', 'aspireexplorer' ); ?>">
+				rel="noopener noreferrer">
 				<span class="dashicons dashicons-download" aria-hidden="true"></span>
-				<span class="screen-reader-text"><?php esc_html_e( 'Download', 'aspireexplorer' ); ?></span>
 				<?php esc_html_e( 'Download', 'aspireexplorer' ); ?>
 			</a>
 		</p>
