@@ -33,11 +33,11 @@ if ( empty( $theme_screenshot ) ) {
 	</div>
 	<header class="entry-header">
 		<div class="entry-title">
-			<h3 class="theme-title">
+			<h2 class="theme-title">
 				<a href="<?php echo esc_url( $theme_url ); ?>">
 					<?php echo esc_html( $theme_info->get_name() ); ?>
 				</a>
-			</h3>
+			</h2>
 			<p class="theme-author">
 				<span class="screen-reader-text"><?php esc_html_e( 'Author:', 'aspireexplorer' ); ?> </span>
 				<?php esc_html_e( 'by', 'aspireexplorer' ); ?>

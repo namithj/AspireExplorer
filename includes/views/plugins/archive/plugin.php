@@ -19,11 +19,11 @@ if ( empty( $plugin_icon ) ) {
 			<img class="plugin-icon" src="<?php echo esc_url( $plugin_icon ); ?>" alt="<?php echo esc_attr( $plugin_info->get_name() ); ?> <?php esc_attr_e( 'icon', 'aspireexplorer' ); ?>">
 		</div>
 		<div class="entry-title">
-			<h3 class="plugin-title">
+			<h2 class="plugin-title">
 				<a href="<?php echo esc_url( $plugin_url ); ?>">
 					<?php echo esc_html( $plugin_info->get_name() ); ?>
 				</a>
-			</h3>
+			</h2>
 			<p class="plugin-author">
 				<span class="screen-reader-text"><?php esc_html_e( 'Author:', 'aspireexplorer' ); ?> </span>
 				<?php esc_html_e( 'by', 'aspireexplorer' ); ?>
@@ -61,9 +61,9 @@ if ( empty( $plugin_icon ) ) {
 			?>
 		</p>
 		<p class="entry-add-to-cart">
-			<button class="button button-secondary" data-slug="<?php echo esc_attr( $plugin_info->get_slug() ); ?>" aria-label="<?php esc_attr_e( 'Add to cart', 'aspireexplorer' ); ?> <?php echo esc_attr( $plugin_info->get_name() ); ?> <?php esc_attr_e( 'plugin', 'aspireexplorer' ); ?>">
+			<button class="button button-secondary" data-slug="<?php echo esc_attr( $plugin_info->get_slug() ); ?>">
 				<span class="dashicons dashicons-cart" aria-hidden="true"></span>
-				<span class="screen-reader-text"><?php esc_html_e( 'Add to cart', 'aspireexplorer' ); ?></span>
+				<span class="screen-reader-text"><?php esc_attr_e( 'Add to cart', 'aspireexplorer' ); ?> <?php echo esc_attr( $plugin_info->get_name() ); ?> <?php esc_attr_e( 'plugin', 'aspireexplorer' ); ?></span>
 			</button>
 		</p>
 		<p class="entry-download">
