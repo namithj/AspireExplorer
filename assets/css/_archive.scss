@@ -204,7 +204,7 @@
 				.entry-add-to-cart {
 					button {
 						background: #6eb9e3;
-						color: #fff;
+						color: #000;
 						border: none;
 						border-radius: 4px;
 						padding: 8px 18px;
@@ -302,13 +302,13 @@
 
 					&.current {
 						background: #6eb9e3;
-						color: #fff;
+						color: #000000;
 						border-color: #6eb9e3;
 					}
 
 					&:hover:not(.current):not(.dots) {
 						background: #e9ecef;
-						color: #182b49;
+						color: #000000;
 					}
 
 					&.dots {
