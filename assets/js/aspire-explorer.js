@@ -1,6 +1,7 @@
 jQuery(document).ready(function () {
 	new AeLightbox();
 	new AeCart();
+	new AeDetails();
 	if( jQuery('#not-found').length !== 0 ) {
 		new FallingText({
 			container: document.getElementById('not-found'),
@@ -11,6 +12,49 @@ jQuery(document).ready(function () {
 	}
 });
 
+class AeDetails {
+	constructor() {
+		this.bindEvents();
+	}
+
+	bindEvents() {
+		document.querySelectorAll("details summary").forEach(summary => {
+			summary.addEventListener("click", (e) => {
+				this.handleSummaryClick(e.currentTarget);
+			});
+
+			summary.addEventListener("keydown", (e) => {
+				this.handleSummaryKeydown(e);
+			});
+		});
+	}
+
+	handleSummaryClick(summary) {
+		const details = summary.parentNode;
+		// Update aria-expanded based on the details state after the click
+		setTimeout(() => {
+			summary.setAttribute("aria-expanded", details.open ? "true" : "false");
+		}, 0);
+	}
+
+	handleSummaryKeydown(e) {
+		// Fallback for browsers that don't handle Enter/Space well
+		if (e.key === " " || e.key === "Enter") {
+			e.preventDefault();
+			e.currentTarget.click();
+		}
+	}
+
+	destroy() {
+		// Remove event listeners if needed for cleanup
+		document.querySelectorAll("details summary").forEach(summary => {
+			// Clone and replace to remove all event listeners
+			const newSummary = summary.cloneNode(true);
+			summary.parentNode.replaceChild(newSummary, summary);
+		});
+	}
+}
+
 class AeLightbox {
 	constructor() {
 		this.overlay = null;
@@ -20,7 +64,7 @@ class AeLightbox {
 	}
 
 	bindOpen() {
-		jQuery('#accordion-content-screenshots ol a').on('click', (e) => {
+		jQuery('#details-content-screenshots ol a').on('click', (e) => {
 			e.preventDefault();
 			const imgSrc = jQuery(e.currentTarget).find('img').attr('src');
 			this.createLightboxMarkup(imgSrc);
@@ -30,7 +74,7 @@ class AeLightbox {
 	createLightboxMarkup(imgSrc) {
 		jQuery('#ae-lightbox-overlay').remove();
 		// Find the caption from the <p> sibling of the clicked <a>
-		const $link = jQuery(`#accordion-content-screenshots ol a img[src='${imgSrc}']`).closest('a');
+		const $link = jQuery(`#details-content-screenshots ol a img[src='${imgSrc}']`).closest('a');
 		let caption = '';
 		if ($link.length) {
 			const $captionP = $link.next('p');

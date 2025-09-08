@@ -65,12 +65,15 @@ if ( isset( $sections['description'] ) ) {
 					}
 				);
 
+				$is_first = true;
 				foreach ( $sections as $section => $content ) {
-					echo '<div class="accordion-item" id="accordion-item-' . esc_attr( $section ) . '">';
-					echo '<input type="radio" name="accordions" id="section-' . esc_attr( $section ) . '" ' . checked( $section, array_key_first( $sections ), false ) . '>';
-					echo '<label for="section-' . esc_attr( $section ) . '" aria-label="' . esc_attr( sprintf( __( '%s section', 'aspireexplorer' ), ucfirst( $section ) ) ) . '">' . esc_html( ucfirst( $section ) ) . '</label>';
-					echo '<div class="accordion-content" id="accordion-content-' . esc_attr( $section ) . '" aria-labelledby="section-' . esc_attr( $section ) . '">' . wp_kses_post( $content ) . '</div>';
-					echo '</div>';
+					echo '<details class="section-item" id="section-item-' . esc_attr( $section ) . '" ' . esc_attr( ( $is_first ) ? 'open' : '' ) . '>';
+					echo '<summary role="button" aria-expanded="' . esc_attr( ( $is_first ) ? 'true' : 'false' ) . '">' . esc_html( ucfirst( $section ) ) . '</summary>';
+					echo '<div class="details-content" id="details-content-' . esc_attr( $section ) . '">' . wp_kses_post( $content ) . '</div>';
+					echo '</details>';
+					if ( $is_first ) {
+						$is_first = false;
+					}
 				}
 			}
 			?>

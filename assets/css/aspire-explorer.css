@@ -1126,14 +1126,6 @@
 .single-theme-card .entry-main article input[type=radio] {
   display: none;
 }
-.single-plugin-card .entry-main article .accordion-item,
-.single-theme-card .entry-main article .accordion-item {
-  border-top: 1px solid #ccc;
-}
-.single-plugin-card .entry-main article .accordion-item:last-child,
-.single-theme-card .entry-main article .accordion-item:last-child {
-  border-bottom: 1px solid #ccc;
-}
 .single-plugin-card .entry-main article input,
 .single-theme-card .entry-main article input {
   display: none;
@@ -1153,68 +1145,95 @@
 .single-theme-card .entry-main article label:hover {
   background: #e0e0e0;
 }
-.single-plugin-card .entry-main article .accordion-content,
-.single-theme-card .entry-main article .accordion-content {
-  max-height: 0;
-  overflow: hidden;
+.single-plugin-card .entry-main article details summary,
+.single-theme-card .entry-main article details summary {
+  padding: 1em;
+  background: #f5f5f5;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  outline: none;
+}
+.single-plugin-card .entry-main article details summary:hover,
+.single-theme-card .entry-main article details summary:hover {
+  background: #e0e0e0;
+}
+.single-plugin-card .entry-main article details summary:focus,
+.single-theme-card .entry-main article details summary:focus {
+  background: #e0e0e0;
+}
+.single-plugin-card .entry-main article details .details-content,
+.single-theme-card .entry-main article details .details-content {
+  max-height: 500px;
+  overflow-y: scroll;
+  padding: 20px 20px 30px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
   background: #fff;
   transition: max-height 0.3s ease;
-  padding: 0;
+  border-top: 1px solid #ccc;
 }
-.single-plugin-card .entry-main article .accordion-content a,
-.single-plugin-card .entry-main article .accordion-content abbr,
-.single-plugin-card .entry-main article .accordion-content acronym,
-.single-plugin-card .entry-main article .accordion-content b,
-.single-plugin-card .entry-main article .accordion-content blockquote,
-.single-plugin-card .entry-main article .accordion-content cite,
-.single-plugin-card .entry-main article .accordion-content code,
-.single-plugin-card .entry-main article .accordion-content del,
-.single-plugin-card .entry-main article .accordion-content em,
-.single-plugin-card .entry-main article .accordion-content i,
-.single-plugin-card .entry-main article .accordion-content q,
-.single-plugin-card .entry-main article .accordion-content strike,
-.single-plugin-card .entry-main article .accordion-content strong,
-.single-plugin-card .entry-main article .accordion-content br,
-.single-plugin-card .entry-main article .accordion-content p,
-.single-plugin-card .entry-main article .accordion-content ul,
-.single-plugin-card .entry-main article .accordion-content ol,
-.single-plugin-card .entry-main article .accordion-content li,
-.single-plugin-card .entry-main article .accordion-content hr,
-.single-plugin-card .entry-main article .accordion-content img,
-.single-plugin-card .entry-main article .accordion-content h1,
-.single-plugin-card .entry-main article .accordion-content h2,
-.single-plugin-card .entry-main article .accordion-content h3,
-.single-plugin-card .entry-main article .accordion-content h4,
-.single-plugin-card .entry-main article .accordion-content h5,
-.single-plugin-card .entry-main article .accordion-content h6,
-.single-plugin-card .entry-main article .accordion-content pre,
-.single-theme-card .entry-main article .accordion-content a,
-.single-theme-card .entry-main article .accordion-content abbr,
-.single-theme-card .entry-main article .accordion-content acronym,
-.single-theme-card .entry-main article .accordion-content b,
-.single-theme-card .entry-main article .accordion-content blockquote,
-.single-theme-card .entry-main article .accordion-content cite,
-.single-theme-card .entry-main article .accordion-content code,
-.single-theme-card .entry-main article .accordion-content del,
-.single-theme-card .entry-main article .accordion-content em,
-.single-theme-card .entry-main article .accordion-content i,
-.single-theme-card .entry-main article .accordion-content q,
-.single-theme-card .entry-main article .accordion-content strike,
-.single-theme-card .entry-main article .accordion-content strong,
-.single-theme-card .entry-main article .accordion-content br,
-.single-theme-card .entry-main article .accordion-content p,
-.single-theme-card .entry-main article .accordion-content ul,
-.single-theme-card .entry-main article .accordion-content ol,
-.single-theme-card .entry-main article .accordion-content li,
-.single-theme-card .entry-main article .accordion-content hr,
-.single-theme-card .entry-main article .accordion-content img,
-.single-theme-card .entry-main article .accordion-content h1,
-.single-theme-card .entry-main article .accordion-content h2,
-.single-theme-card .entry-main article .accordion-content h3,
-.single-theme-card .entry-main article .accordion-content h4,
-.single-theme-card .entry-main article .accordion-content h5,
-.single-theme-card .entry-main article .accordion-content h6,
-.single-theme-card .entry-main article .accordion-content pre {
+.single-plugin-card .entry-main article details .details-content::last-child,
+.single-theme-card .entry-main article details .details-content::last-child {
+  border-bottom: 1px solid #ccc;
+}
+.single-plugin-card .entry-main article details .details-content a,
+.single-plugin-card .entry-main article details .details-content abbr,
+.single-plugin-card .entry-main article details .details-content acronym,
+.single-plugin-card .entry-main article details .details-content b,
+.single-plugin-card .entry-main article details .details-content blockquote,
+.single-plugin-card .entry-main article details .details-content cite,
+.single-plugin-card .entry-main article details .details-content code,
+.single-plugin-card .entry-main article details .details-content del,
+.single-plugin-card .entry-main article details .details-content em,
+.single-plugin-card .entry-main article details .details-content i,
+.single-plugin-card .entry-main article details .details-content q,
+.single-plugin-card .entry-main article details .details-content strike,
+.single-plugin-card .entry-main article details .details-content strong,
+.single-plugin-card .entry-main article details .details-content br,
+.single-plugin-card .entry-main article details .details-content p,
+.single-plugin-card .entry-main article details .details-content ul,
+.single-plugin-card .entry-main article details .details-content ol,
+.single-plugin-card .entry-main article details .details-content li,
+.single-plugin-card .entry-main article details .details-content hr,
+.single-plugin-card .entry-main article details .details-content img,
+.single-plugin-card .entry-main article details .details-content h1,
+.single-plugin-card .entry-main article details .details-content h2,
+.single-plugin-card .entry-main article details .details-content h3,
+.single-plugin-card .entry-main article details .details-content h4,
+.single-plugin-card .entry-main article details .details-content h5,
+.single-plugin-card .entry-main article details .details-content h6,
+.single-plugin-card .entry-main article details .details-content pre,
+.single-theme-card .entry-main article details .details-content a,
+.single-theme-card .entry-main article details .details-content abbr,
+.single-theme-card .entry-main article details .details-content acronym,
+.single-theme-card .entry-main article details .details-content b,
+.single-theme-card .entry-main article details .details-content blockquote,
+.single-theme-card .entry-main article details .details-content cite,
+.single-theme-card .entry-main article details .details-content code,
+.single-theme-card .entry-main article details .details-content del,
+.single-theme-card .entry-main article details .details-content em,
+.single-theme-card .entry-main article details .details-content i,
+.single-theme-card .entry-main article details .details-content q,
+.single-theme-card .entry-main article details .details-content strike,
+.single-theme-card .entry-main article details .details-content strong,
+.single-theme-card .entry-main article details .details-content br,
+.single-theme-card .entry-main article details .details-content p,
+.single-theme-card .entry-main article details .details-content ul,
+.single-theme-card .entry-main article details .details-content ol,
+.single-theme-card .entry-main article details .details-content li,
+.single-theme-card .entry-main article details .details-content hr,
+.single-theme-card .entry-main article details .details-content img,
+.single-theme-card .entry-main article details .details-content h1,
+.single-theme-card .entry-main article details .details-content h2,
+.single-theme-card .entry-main article details .details-content h3,
+.single-theme-card .entry-main article details .details-content h4,
+.single-theme-card .entry-main article details .details-content h5,
+.single-theme-card .entry-main article details .details-content h6,
+.single-theme-card .entry-main article details .details-content pre {
   margin: 0;
   padding: 0;
   border: 0;
@@ -1224,25 +1243,25 @@
   background: none;
   box-sizing: border-box;
 }
-.single-plugin-card .entry-main article .accordion-content p,
-.single-theme-card .entry-main article .accordion-content p {
+.single-plugin-card .entry-main article details .details-content p,
+.single-theme-card .entry-main article details .details-content p {
   margin: 0 0 1em 0;
 }
-.single-plugin-card .entry-main article .accordion-content ul,
-.single-plugin-card .entry-main article .accordion-content ol,
-.single-theme-card .entry-main article .accordion-content ul,
-.single-theme-card .entry-main article .accordion-content ol {
+.single-plugin-card .entry-main article details .details-content ul,
+.single-plugin-card .entry-main article details .details-content ol,
+.single-theme-card .entry-main article details .details-content ul,
+.single-theme-card .entry-main article details .details-content ol {
   margin: 0 0 1em 1.5em;
   padding: 0;
   list-style: disc inside;
 }
-.single-plugin-card .entry-main article .accordion-content li,
-.single-theme-card .entry-main article .accordion-content li {
+.single-plugin-card .entry-main article details .details-content li,
+.single-theme-card .entry-main article details .details-content li {
   margin: 0 0 0.5em 0;
   padding: 0;
 }
-.single-plugin-card .entry-main article .accordion-content dt,
-.single-theme-card .entry-main article .accordion-content dt {
+.single-plugin-card .entry-main article details .details-content dt,
+.single-theme-card .entry-main article details .details-content dt {
   font-weight: bold;
   margin: 1.5em 0 0.5em 0;
   font-size: 1.1em;
@@ -1251,8 +1270,8 @@
   position: relative;
   display: block;
 }
-.single-plugin-card .entry-main article .accordion-content dt > *,
-.single-theme-card .entry-main article .accordion-content dt > * {
+.single-plugin-card .entry-main article details .details-content dt > *,
+.single-theme-card .entry-main article details .details-content dt > * {
   font-weight: normal;
   margin: 0.5em 0 0 0;
   font-size: 1em;
@@ -1260,69 +1279,69 @@
   color: #444;
   display: block;
 }
-.single-plugin-card .entry-main article .accordion-content dt > a,
-.single-plugin-card .entry-main article .accordion-content dt > strong,
-.single-plugin-card .entry-main article .accordion-content dt > em,
-.single-plugin-card .entry-main article .accordion-content dt > code,
-.single-theme-card .entry-main article .accordion-content dt > a,
-.single-theme-card .entry-main article .accordion-content dt > strong,
-.single-theme-card .entry-main article .accordion-content dt > em,
-.single-theme-card .entry-main article .accordion-content dt > code {
+.single-plugin-card .entry-main article details .details-content dt > a,
+.single-plugin-card .entry-main article details .details-content dt > strong,
+.single-plugin-card .entry-main article details .details-content dt > em,
+.single-plugin-card .entry-main article details .details-content dt > code,
+.single-theme-card .entry-main article details .details-content dt > a,
+.single-theme-card .entry-main article details .details-content dt > strong,
+.single-theme-card .entry-main article details .details-content dt > em,
+.single-theme-card .entry-main article details .details-content dt > code {
   display: inline;
   margin: 0;
   font-size: 1em;
   color: inherit;
 }
-.single-plugin-card .entry-main article .accordion-content h1,
-.single-theme-card .entry-main article .accordion-content h1 {
+.single-plugin-card .entry-main article details .details-content h1,
+.single-theme-card .entry-main article details .details-content h1 {
   font-size: 2em;
   font-weight: 700;
   margin: 0 0 0.67em 0;
 }
-.single-plugin-card .entry-main article .accordion-content h2,
-.single-theme-card .entry-main article .accordion-content h2 {
+.single-plugin-card .entry-main article details .details-content h2,
+.single-theme-card .entry-main article details .details-content h2 {
   font-size: 1.5em;
   font-weight: 700;
   margin: 0 0 0.75em 0;
 }
-.single-plugin-card .entry-main article .accordion-content h3,
-.single-theme-card .entry-main article .accordion-content h3 {
+.single-plugin-card .entry-main article details .details-content h3,
+.single-theme-card .entry-main article details .details-content h3 {
   font-size: 1.17em;
   font-weight: 700;
   margin: 0 0 0.83em 0;
 }
-.single-plugin-card .entry-main article .accordion-content h4,
-.single-theme-card .entry-main article .accordion-content h4 {
+.single-plugin-card .entry-main article details .details-content h4,
+.single-theme-card .entry-main article details .details-content h4 {
   font-size: 1em;
   font-weight: 700;
   margin: 0 0 1.12em 0;
 }
-.single-plugin-card .entry-main article .accordion-content h5,
-.single-theme-card .entry-main article .accordion-content h5 {
+.single-plugin-card .entry-main article details .details-content h5,
+.single-theme-card .entry-main article details .details-content h5 {
   font-size: 0.83em;
   font-weight: 700;
   margin: 0 0 1.5em 0;
 }
-.single-plugin-card .entry-main article .accordion-content h6,
-.single-theme-card .entry-main article .accordion-content h6 {
+.single-plugin-card .entry-main article details .details-content h6,
+.single-theme-card .entry-main article details .details-content h6 {
   font-size: 0.67em;
   font-weight: 700;
   margin: 0 0 1.67em 0;
 }
-.single-plugin-card .entry-main article .accordion-content b,
-.single-plugin-card .entry-main article .accordion-content strong,
-.single-theme-card .entry-main article .accordion-content b,
-.single-theme-card .entry-main article .accordion-content strong {
+.single-plugin-card .entry-main article details .details-content b,
+.single-plugin-card .entry-main article details .details-content strong,
+.single-theme-card .entry-main article details .details-content b,
+.single-theme-card .entry-main article details .details-content strong {
   font-weight: 700;
 }
-.single-plugin-card .entry-main article .accordion-content i,
-.single-plugin-card .entry-main article .accordion-content em,
-.single-theme-card .entry-main article .accordion-content i,
-.single-theme-card .entry-main article .accordion-content em {
+.single-plugin-card .entry-main article details .details-content i,
+.single-plugin-card .entry-main article details .details-content em,
+.single-theme-card .entry-main article details .details-content i,
+.single-theme-card .entry-main article details .details-content em {
   font-style: italic;
 }
-.single-plugin-card .entry-main article .accordion-content blockquote,
-.single-theme-card .entry-main article .accordion-content blockquote {
+.single-plugin-card .entry-main article details .details-content blockquote,
+.single-theme-card .entry-main article details .details-content blockquote {
   margin: 1em 0;
   padding-left: 1em;
   border-left: 4px solid #eee;
@@ -1330,45 +1349,45 @@
   background: none;
   font-style: italic;
 }
-.single-plugin-card .entry-main article .accordion-content pre,
-.single-plugin-card .entry-main article .accordion-content code,
-.single-theme-card .entry-main article .accordion-content pre,
-.single-theme-card .entry-main article .accordion-content code {
+.single-plugin-card .entry-main article details .details-content pre,
+.single-plugin-card .entry-main article details .details-content code,
+.single-theme-card .entry-main article details .details-content pre,
+.single-theme-card .entry-main article details .details-content code {
   font-family: monospace, monospace;
   font-size: 1em;
   background: #f5f5f5;
   padding: 0.2em 0.4em;
   border-radius: 3px;
 }
-.single-plugin-card .entry-main article .accordion-content hr,
-.single-theme-card .entry-main article .accordion-content hr {
+.single-plugin-card .entry-main article details .details-content hr,
+.single-theme-card .entry-main article details .details-content hr {
   border: none;
   border-top: 1px solid #ccc;
   height: 0;
   margin: 1em 0;
 }
-.single-plugin-card .entry-main article .accordion-content a,
-.single-theme-card .entry-main article .accordion-content a {
+.single-plugin-card .entry-main article details .details-content a,
+.single-theme-card .entry-main article details .details-content a {
   color: #0073aa;
   text-decoration: underline;
   font-weight: 400;
 }
-.single-plugin-card .entry-main article .accordion-content a:hover,
-.single-plugin-card .entry-main article .accordion-content a:focus,
-.single-theme-card .entry-main article .accordion-content a:hover,
-.single-theme-card .entry-main article .accordion-content a:focus {
+.single-plugin-card .entry-main article details .details-content a:hover,
+.single-plugin-card .entry-main article details .details-content a:focus,
+.single-theme-card .entry-main article details .details-content a:hover,
+.single-theme-card .entry-main article details .details-content a:focus {
   color: #005177;
   text-decoration: underline;
 }
-.single-plugin-card .entry-main article .accordion-content img,
-.single-theme-card .entry-main article .accordion-content img {
+.single-plugin-card .entry-main article details .details-content img,
+.single-theme-card .entry-main article details .details-content img {
   max-width: 100%;
   height: auto;
   display: inline-block;
   border: none;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-screenshots ol,
-.single-theme-card .entry-main article .accordion-content#accordion-content-screenshots ol {
+.single-plugin-card .entry-main article details .details-content#details-content-screenshots ol,
+.single-theme-card .entry-main article details .details-content#details-content-screenshots ol {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1376,8 +1395,8 @@
   flex-wrap: wrap;
   gap: 24px;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-screenshots ol li,
-.single-theme-card .entry-main article .accordion-content#accordion-content-screenshots ol li {
+.single-plugin-card .entry-main article details .details-content#details-content-screenshots ol li,
+.single-theme-card .entry-main article details .details-content#details-content-screenshots ol li {
   background: #fafbfc;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -1389,12 +1408,12 @@
   align-items: center;
   transition: box-shadow 0.2s;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-screenshots ol li:hover,
-.single-theme-card .entry-main article .accordion-content#accordion-content-screenshots ol li:hover {
+.single-plugin-card .entry-main article details .details-content#details-content-screenshots ol li:hover,
+.single-theme-card .entry-main article details .details-content#details-content-screenshots ol li:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-screenshots ol a,
-.single-theme-card .entry-main article .accordion-content#accordion-content-screenshots ol a {
+.single-plugin-card .entry-main article details .details-content#details-content-screenshots ol a,
+.single-theme-card .entry-main article details .details-content#details-content-screenshots ol a {
   display: block;
   margin-bottom: 12px;
   border-radius: 6px;
@@ -1402,32 +1421,32 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   transition: box-shadow 0.2s;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-screenshots ol a:hover,
-.single-theme-card .entry-main article .accordion-content#accordion-content-screenshots ol a:hover {
+.single-plugin-card .entry-main article details .details-content#details-content-screenshots ol a:hover,
+.single-theme-card .entry-main article details .details-content#details-content-screenshots ol a:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-screenshots ol img,
-.single-theme-card .entry-main article .accordion-content#accordion-content-screenshots ol img {
+.single-plugin-card .entry-main article details .details-content#details-content-screenshots ol img,
+.single-theme-card .entry-main article details .details-content#details-content-screenshots ol img {
   width: 100%;
   height: auto;
   display: block;
   border-radius: 6px;
   background: #e9ecef;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-screenshots ol p,
-.single-theme-card .entry-main article .accordion-content#accordion-content-screenshots ol p {
+.single-plugin-card .entry-main article details .details-content#details-content-screenshots ol p,
+.single-theme-card .entry-main article details .details-content#details-content-screenshots ol p {
   margin: 12px 0 0 0;
   font-size: 1em;
   color: #222;
   text-align: center;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-screenshots ol strong,
-.single-theme-card .entry-main article .accordion-content#accordion-content-screenshots ol strong {
+.single-plugin-card .entry-main article details .details-content#details-content-screenshots ol strong,
+.single-theme-card .entry-main article details .details-content#details-content-screenshots ol strong {
   font-weight: 700;
   color: #222;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-reviews .review,
-.single-theme-card .entry-main article .accordion-content#accordion-content-reviews .review {
+.single-plugin-card .entry-main article details .details-content#details-content-reviews .review,
+.single-theme-card .entry-main article details .details-content#details-content-reviews .review {
   background: #f9fafb;
   border: 1px solid #e3e6ea;
   border-radius: 8px;
@@ -1438,51 +1457,51 @@
   color: #222;
   position: relative;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head,
-.single-theme-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head {
+.single-plugin-card .entry-main article details .details-content#details-content-reviews .review .review-head,
+.single-theme-card .entry-main article details .details-content#details-content-reviews .review .review-head {
   display: flex;
   align-items: flex-start;
   margin-bottom: 12px;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info,
-.single-theme-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info {
+.single-plugin-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info,
+.single-theme-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info {
   display: flex;
   flex-direction: column;
   gap: 6px;
   width: 100%;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .review-title-section,
-.single-theme-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .review-title-section {
+.single-plugin-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .review-title-section,
+.single-theme-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .review-title-section {
   display: flex;
   align-items: center;
   gap: 16px;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .review-title-section .review-title,
-.single-theme-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .review-title-section .review-title {
+.single-plugin-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .review-title-section .review-title,
+.single-theme-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .review-title-section .review-title {
   margin: 0;
   font-size: 1.15em;
   font-weight: 600;
   color: #1a1a1a;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .review-title-section .star-rating,
-.single-theme-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .review-title-section .star-rating {
+.single-plugin-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .review-title-section .star-rating,
+.single-theme-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .review-title-section .star-rating {
   display: flex;
   align-items: center;
   gap: 2px;
   margin-left: 8px;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .review-title-section .star-rating .wporg-ratings,
-.single-theme-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .review-title-section .star-rating .wporg-ratings {
+.single-plugin-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .review-title-section .star-rating .wporg-ratings,
+.single-theme-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .review-title-section .star-rating .wporg-ratings {
   font-size: 1.1em;
   color: #ffb900;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .review-title-section .star-rating .wporg-ratings .star,
-.single-theme-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .review-title-section .star-rating .wporg-ratings .star {
+.single-plugin-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .review-title-section .star-rating .wporg-ratings .star,
+.single-theme-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .review-title-section .star-rating .wporg-ratings .star {
   display: inline-block;
   margin-right: 0.25em;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .reviewer,
-.single-theme-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .reviewer {
+.single-plugin-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .reviewer,
+.single-theme-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .reviewer {
   margin: 0;
   font-size: 0.97em;
   color: #666;
@@ -1490,42 +1509,34 @@
   align-items: center;
   gap: 6px;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .reviewer .avatar,
-.single-theme-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .reviewer .avatar {
+.single-plugin-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .reviewer .avatar,
+.single-theme-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .reviewer .avatar {
   border-radius: 50%;
   margin-right: 4px;
   vertical-align: middle;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .reviewer .reviewer-name,
-.single-theme-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .reviewer .reviewer-name {
+.single-plugin-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .reviewer .reviewer-name,
+.single-theme-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .reviewer .reviewer-name {
   font-weight: 500;
   color: #0073aa;
   text-decoration: none;
   margin: 0 2px;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .reviewer .review-date,
-.single-theme-card .entry-main article .accordion-content#accordion-content-reviews .review .review-head .reviewer-info .reviewer .review-date {
+.single-plugin-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .reviewer .review-date,
+.single-theme-card .entry-main article details .details-content#details-content-reviews .review .review-head .reviewer-info .reviewer .review-date {
   color: #999;
   font-size: 0.95em;
   margin-left: 4px;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-reviews .review .review-body,
-.single-theme-card .entry-main article .accordion-content#accordion-content-reviews .review .review-body {
+.single-plugin-card .entry-main article details .details-content#details-content-reviews .review .review-body,
+.single-theme-card .entry-main article details .details-content#details-content-reviews .review .review-body {
   margin-top: 8px;
 }
-.single-plugin-card .entry-main article .accordion-content#accordion-content-reviews .review .review-body p,
-.single-theme-card .entry-main article .accordion-content#accordion-content-reviews .review .review-body p {
+.single-plugin-card .entry-main article details .details-content#details-content-reviews .review .review-body p,
+.single-theme-card .entry-main article details .details-content#details-content-reviews .review .review-body p {
   margin: 0 0 1em 0;
   line-height: 1.7;
   color: #222;
-}
-.single-plugin-card .entry-main article input:checked ~ .accordion-content,
-.single-theme-card .entry-main article input:checked ~ .accordion-content {
-  max-height: 500px;
-  overflow-y: scroll;
-  padding: 20px 20px 30px;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
 }
 .single-plugin-card .entry-main sidebar,
 .single-theme-card .entry-main sidebar {
@@ -1707,21 +1718,21 @@
     padding: 7px;
     font-size: 0.97em;
   }
-  .single-plugin-card .accordion-content,
-  .single-theme-card .accordion-content {
+  .single-plugin-card .details-content,
+  .single-theme-card .details-content {
     padding: 0 3vw;
   }
-  .single-plugin-card .accordion-content#accordion-content-screenshots ol,
-  .single-theme-card .accordion-content#accordion-content-screenshots ol {
+  .single-plugin-card .details-content#details-content-screenshots ol,
+  .single-theme-card .details-content#details-content-screenshots ol {
     gap: 10px;
   }
-  .single-plugin-card .accordion-content#accordion-content-screenshots ol li,
-  .single-theme-card .accordion-content#accordion-content-screenshots ol li {
+  .single-plugin-card .details-content#details-content-screenshots ol li,
+  .single-theme-card .details-content#details-content-screenshots ol li {
     padding: 6px;
     max-width: 100%;
   }
-  .single-plugin-card .accordion-content#accordion-content-reviews .review,
-  .single-theme-card .accordion-content#accordion-content-reviews .review {
+  .single-plugin-card .details-content#details-content-reviews .review,
+  .single-theme-card .details-content#details-content-reviews .review {
     padding: 10px 6px 10px 6px;
     font-size: 0.97em;
   }
@@ -1745,21 +1756,21 @@
     padding: 5px;
     font-size: 0.96em;
   }
-  .single-plugin-card .accordion-content,
-  .single-theme-card .accordion-content {
+  .single-plugin-card .details-content,
+  .single-theme-card .details-content {
     padding: 0 2vw;
   }
-  .single-plugin-card .accordion-content#accordion-content-screenshots ol,
-  .single-theme-card .accordion-content#accordion-content-screenshots ol {
+  .single-plugin-card .details-content#details-content-screenshots ol,
+  .single-theme-card .details-content#details-content-screenshots ol {
     gap: 6px;
   }
-  .single-plugin-card .accordion-content#accordion-content-screenshots ol li,
-  .single-theme-card .accordion-content#accordion-content-screenshots ol li {
+  .single-plugin-card .details-content#details-content-screenshots ol li,
+  .single-theme-card .details-content#details-content-screenshots ol li {
     padding: 4px;
     max-width: 100%;
   }
-  .single-plugin-card .accordion-content#accordion-content-reviews .review,
-  .single-theme-card .accordion-content#accordion-content-reviews .review {
+  .single-plugin-card .details-content#details-content-reviews .review,
+  .single-theme-card .details-content#details-content-reviews .review {
     padding: 8px 2px 8px 2px;
     font-size: 0.96em;
   }
