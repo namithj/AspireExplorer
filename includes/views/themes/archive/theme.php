@@ -21,7 +21,7 @@ if ( empty( $theme_screenshot ) ) {
 	$theme_screenshot = AE_DIR_URL . 'assets/images/default-banner.svg';
 }
 ?>
-<li class="theme-card" aria-label="<?php echo esc_attr( $theme_info->get_name() ); ?> <?php esc_attr_e( 'theme card', 'aspireexplorer' ); ?>">
+<li class="theme-card">
 	<div class="theme-banner">
 		<a href="<?php echo esc_url( $theme_url ); ?>"
 			aria-label="<?php echo esc_attr( $theme_info->get_name() ); ?> <?php esc_attr_e( 'theme details', 'aspireexplorer' ); ?>"
