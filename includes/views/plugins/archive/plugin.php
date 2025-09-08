@@ -20,29 +20,24 @@ if ( empty( $plugin_icon ) ) {
 		</div>
 		<div class="entry-title">
 			<h3 class="plugin-title">
-				<a href="<?php echo esc_url( $plugin_url ); ?>"
-					aria-label="<?php echo esc_attr( $plugin_info->get_name() ); ?> <?php esc_attr_e( 'plugin details', 'aspireexplorer' ); ?>"
-					title="<?php echo esc_attr( $plugin_info->get_name() ); ?>">
+				<a href="<?php echo esc_url( $plugin_url ); ?>">
 					<?php echo esc_html( $plugin_info->get_name() ); ?>
 				</a>
 			</h3>
 			<p class="plugin-author">
 				<span class="screen-reader-text"><?php esc_html_e( 'Author:', 'aspireexplorer' ); ?> </span>
 				<?php esc_html_e( 'by', 'aspireexplorer' ); ?>
-				<span aria-label="<?php esc_attr_e( 'Author', 'aspireexplorer' ); ?>: <?php echo esc_attr( $plugin_info->get_author() ); ?>">
+				<span>
 					<?php echo esc_html( $plugin_info->get_author() ); ?>
 				</span>
 			</p>
 			<p class="plugin-version">
-				<span class="screen-reader-text"><?php esc_html_e( 'Version:', 'aspireexplorer' ); ?> </span>
-				<span aria-label="<?php esc_attr_e( 'Version', 'aspireexplorer' ); ?>: <?php echo esc_attr( $plugin_info->get_version() ); ?>">
-					<?php echo esc_html( $plugin_info->get_version() ); ?>
-				</span>
+				<span><?php esc_html_e( 'version', 'aspireexplorer' ); ?></span> <?php echo esc_html( $plugin_info->get_version() ); ?>
 			</p>
 		</div>
 	</header>
 	<div class="entry-excerpt">
-		<p aria-label="<?php esc_attr_e( 'Short description', 'aspireexplorer' ); ?>">
+		<p>
 			<?php echo esc_html( wp_trim_words( $plugin_info->get_short_description(), 30 ) ); ?>
 		</p>
 	</div>
@@ -52,15 +47,13 @@ if ( empty( $plugin_icon ) ) {
 			$active_installs = $plugin_info->get_active_installs();
 			if ( is_null( $active_installs ) ) {
 				?>
-				<span class="screen-reader-text"><?php esc_html_e( 'Installation Count not Available:', 'aspireexplorer' ); ?> </span>
-				<span aria-label="<?php esc_attr_e( 'Installation Count not Available', 'aspireexplorer' ); ?>">
+				<span>
 					<?php esc_html_e( 'Installation Count not Available', 'aspireexplorer' ); ?>
 				</span>
 				<?php
 			} else {
 				?>
-				<span class="screen-reader-text"><?php esc_html_e( 'Active installations:', 'aspireexplorer' ); ?> </span>
-				<span aria-label="<?php esc_attr_e( 'Active installations', 'aspireexplorer' ); ?>: <?php echo esc_attr( $plugin_info->get_active_installs() ); ?>">
+				<span>
 					<?php echo esc_html( $plugin_info->get_active_installs() ); ?> <?php esc_html_e( 'Active installations', 'aspireexplorer' ); ?>
 				</span>
 				<?php
@@ -90,7 +83,7 @@ if ( empty( $plugin_icon ) ) {
 				$tags = $plugin_info->get_tags();
 				$tags = array_slice( $tags, 0, 5 );
 				foreach ( $tags as $plugin_tag ) {
-					echo '<li class="plugin-tag"><span class="screen-reader-text">' . esc_html__( 'Tag:', 'aspireexplorer' ) . ' </span><span aria-label="' . esc_attr__( 'Tag', 'aspireexplorer' ) . ': ' . esc_attr( $plugin_tag ) . '">' . esc_html( $plugin_tag ) . '</span></li>';
+					echo '<li class="plugin-tag"><span class="screen-reader-text">' . esc_html__( 'Tag:', 'aspireexplorer' ) . ' </span><span>' . esc_html( $plugin_tag ) . '</span></li>';
 				}
 				?>
 			</ul>

@@ -34,29 +34,24 @@ if ( empty( $theme_screenshot ) ) {
 	<header class="entry-header">
 		<div class="entry-title">
 			<h3 class="theme-title">
-				<a href="<?php echo esc_url( $theme_url ); ?>"
-					aria-label="<?php echo esc_attr( $theme_info->get_name() ); ?> <?php esc_attr_e( 'theme details', 'aspireexplorer' ); ?>"
-					title="<?php echo esc_attr( $theme_info->get_name() ); ?>">
+				<a href="<?php echo esc_url( $theme_url ); ?>">
 					<?php echo esc_html( $theme_info->get_name() ); ?>
 				</a>
 			</h3>
 			<p class="theme-author">
 				<span class="screen-reader-text"><?php esc_html_e( 'Author:', 'aspireexplorer' ); ?> </span>
 				<?php esc_html_e( 'by', 'aspireexplorer' ); ?>
-				<span aria-label="<?php esc_attr_e( 'Author', 'aspireexplorer' ); ?>: <?php echo esc_attr( $theme_info->get_author( 'display_name' ) ); ?>">
+				<span>
 					<?php echo esc_html( $theme_info->get_author( 'display_name' ) ); ?>
 				</span>
 			</p>
 			<p class="theme-version">
-				<span class="screen-reader-text"><?php esc_html_e( 'Version:', 'aspireexplorer' ); ?> </span>
-				<span aria-label="<?php esc_attr_e( 'Version', 'aspireexplorer' ); ?>: <?php echo esc_attr( $theme_info->get_version() ); ?>">
-					<?php echo esc_html( $theme_info->get_version() ); ?>
-				</span>
+				<span><?php esc_html_e( 'version', 'aspireexplorer' ); ?></span> <?php echo esc_html( $theme_info->get_version() ); ?>
 			</p>
 		</div>
 	</header>
 	<div class="entry-excerpt">
-		<p aria-label="<?php esc_attr_e( 'Short description', 'aspireexplorer' ); ?>">
+		<p>
 			<?php echo esc_html( wp_trim_words( $theme_info->get_description(), 30 ) ); ?>
 		</p>
 	</div>
@@ -94,7 +89,7 @@ if ( empty( $theme_screenshot ) ) {
 				$tags = $theme_info->get_tags();
 				$tags = array_slice( $tags, 0, 5 );
 				foreach ( $tags as $theme_tag ) {
-					echo '<li class="theme-tag"><span class="screen-reader-text">' . esc_html__( 'Tag:', 'aspireexplorer' ) . ' </span><span aria-label="' . esc_attr__( 'Tag', 'aspireexplorer' ) . ': ' . esc_attr( $theme_tag ) . '">' . esc_html( $theme_tag ) . '</span></li>';
+					echo '<li class="theme-tag"><span class="screen-reader-text">' . esc_html__( 'Tag:', 'aspireexplorer' ) . ' </span><span>' . esc_html( $theme_tag ) . '</span></li>';
 				}
 				?>
 			</ul>
