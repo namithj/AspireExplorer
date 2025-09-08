@@ -6,7 +6,7 @@
 $plugin_info = $args['plugin_info'] ?? [];
 
 $target_page_slug = $args['target_page_slug'] ?? '';
-$plugin_url       = home_url( '/' . $target_page_slug . '/' . $plugin_info->get_slug() );
+$plugin_url       = home_url( '/' . $target_page_slug . '/' . $plugin_info->get_slug() . '/' );
 
 $plugin_icon = $plugin_info->get_best_icon();
 if ( empty( $plugin_icon ) ) {
