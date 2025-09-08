@@ -61,9 +61,9 @@ if ( empty( $plugin_icon ) ) {
 			?>
 		</p>
 		<p class="entry-add-to-cart">
-			<button class="button button-secondary" data-slug="<?php echo esc_attr( $plugin_info->get_slug() ); ?>" aria-label="<?php esc_attr_e( 'Add to cart', 'aspireexplorer' ); ?> <?php echo esc_attr( $plugin_info->get_name() ); ?> <?php esc_attr_e( 'plugin', 'aspireexplorer' ); ?>">
+			<button class="button button-secondary" data-slug="<?php echo esc_attr( $plugin_info->get_slug() ); ?>">
 				<span class="dashicons dashicons-cart" aria-hidden="true"></span>
-				<span class="screen-reader-text"><?php esc_html_e( 'Add to cart', 'aspireexplorer' ); ?></span>
+				<span class="screen-reader-text"><?php esc_attr_e( 'Add to cart', 'aspireexplorer' ); ?> <?php echo esc_attr( $plugin_info->get_name() ); ?> <?php esc_attr_e( 'plugin', 'aspireexplorer' ); ?></span>
 			</button>
 		</p>
 		<p class="entry-download">
