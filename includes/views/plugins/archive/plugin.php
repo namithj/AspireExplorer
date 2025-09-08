@@ -19,11 +19,11 @@ if ( empty( $plugin_icon ) ) {
 			<img class="plugin-icon" src="<?php echo esc_url( $plugin_icon ); ?>" alt="<?php echo esc_attr( $plugin_info->get_name() ); ?> <?php esc_attr_e( 'icon', 'aspireexplorer' ); ?>">
 		</div>
 		<div class="entry-title">
-			<h3 class="plugin-title">
+			<h2 class="plugin-title">
 				<a href="<?php echo esc_url( $plugin_url ); ?>">
 					<?php echo esc_html( $plugin_info->get_name() ); ?>
 				</a>
-			</h3>
+			</h2>
 			<p class="plugin-author">
 				<span class="screen-reader-text"><?php esc_html_e( 'Author:', 'aspireexplorer' ); ?> </span>
 				<?php esc_html_e( 'by', 'aspireexplorer' ); ?>

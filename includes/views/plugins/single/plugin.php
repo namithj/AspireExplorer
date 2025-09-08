@@ -30,7 +30,7 @@ if ( isset( $sections['description'] ) ) {
 	</banner>
 	<header class="entry-header">
 		<div class="entry-title">
-			<h3 class="plugin-title"><?php echo esc_html( $plugin_info->get_name() ); ?></h3>
+			<h2 class="plugin-title"><?php echo esc_html( $plugin_info->get_name() ); ?></h2>
 			<p class="plugin-author">by <?php echo esc_html( $plugin_info->get_author( 'display_name' ) ); ?></p>
 			<p class="plugin-version">Version: <?php echo esc_html( $plugin_info->get_version() ); ?></p>
 		</div>
