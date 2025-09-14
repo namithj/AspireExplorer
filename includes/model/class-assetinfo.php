@@ -1,4 +1,5 @@
 <?php
+
 namespace AspireExplorer\Model;
 
 /**
@@ -7,6 +8,8 @@ namespace AspireExplorer\Model;
  * Base class for shared asset (plugin/theme) properties and methods.
  */
 class AssetInfo {
+
+
 	/**
 	 * The asset's display name.
 	 *
@@ -248,7 +251,7 @@ class AssetInfo {
 	 * @return string|null Asset display name or null if invalid.
 	 */
 	public function get_name() {
-		return is_string( $this->name ) && trim( $this->name ) !== '' ? trim( $this->name ) : null;
+		return is_string( $this->name ) && '' !== $this->name && trim( $this->name ) !== '' ? trim( $this->name ) : null;
 	}
 
 	/**
@@ -257,7 +260,7 @@ class AssetInfo {
 	 * @return string|null Asset slug or null if invalid.
 	 */
 	public function get_slug() {
-		return is_string( $this->slug ) && trim( $this->slug ) !== '' ? trim( $this->slug ) : null;
+		return is_string( $this->slug ) && '' !== $this->slug && trim( $this->slug ) !== '' ? trim( $this->slug ) : null;
 	}
 
 	/**
@@ -266,7 +269,7 @@ class AssetInfo {
 	 * @return string|null Asset version or null.
 	 */
 	public function get_version() {
-		return is_string( $this->version ) ? trim( $this->version ) : null;
+		return is_string( $this->version ) && '' !== $this->version ? trim( $this->version ) : null;
 	}
 
 	/**
@@ -285,7 +288,7 @@ class AssetInfo {
 			if ( null === $parameter ) {
 				$cleaned_author = [];
 				foreach ( $this->author as $key => $value ) {
-					if ( is_string( $value ) && '' !== trim( $value ) ) {
+					if ( is_string( $value ) && '' !== $value && trim( $value ) !== '' ) {
 						$cleaned_author[ $key ] = trim( wp_strip_all_tags( $value ) );
 					}
 				}
@@ -294,13 +297,13 @@ class AssetInfo {
 
 			if ( null !== $parameter && isset( $this->author[ $parameter ] ) ) {
 				$clean = wp_strip_all_tags( $this->author[ $parameter ] );
-				return trim( $clean ) !== '' ? $clean : null;
+				return is_string( $clean ) && '' !== $clean && trim( $clean ) !== '' ? trim( $clean ) : null;
 			}
 		}
 
-		if ( is_string( $this->author ) && '' !== trim( $this->author ) ) {
+		if ( is_string( $this->author ) && '' !== $this->author && trim( $this->author ) !== '' ) {
 			$clean = wp_strip_all_tags( $this->author );
-			return trim( $clean ) !== '' ? $clean : null;
+			return is_string( $clean ) && '' !== $clean && trim( $clean ) !== '' ? trim( $clean ) : null;
 		}
 		return null;
 	}
@@ -320,7 +323,7 @@ class AssetInfo {
 	 * @return string|null Required WP version or null.
 	 */
 	public function get_requires() {
-		return is_string( $this->requires ) ? trim( $this->requires ) : null;
+		return is_string( $this->requires ) && '' !== $this->requires ? trim( $this->requires ) : null;
 	}
 
 	/**
@@ -329,7 +332,7 @@ class AssetInfo {
 	 * @return string|null Tested version or null.
 	 */
 	public function get_tested() {
-		return is_string( $this->tested ) ? trim( $this->tested ) : null;
+		return is_string( $this->tested ) && '' !== $this->tested ? trim( $this->tested ) : null;
 	}
 
 	/**
@@ -338,7 +341,7 @@ class AssetInfo {
 	 * @return string|null Required PHP version or null.
 	 */
 	public function get_requires_php() {
-		return is_string( $this->requires_php ) ? trim( $this->requires_php ) : null;
+		return is_string( $this->requires_php ) && '' !== $this->requires_php ? trim( $this->requires_php ) : null;
 	}
 
 	/**
@@ -399,18 +402,14 @@ class AssetInfo {
 	}
 
 	/**
-	 * Get the last update timestamp.
+	 * Get the last updated date.
 	 *
 	 * @param string|null $format Optional. Format string or null for human readable.
 	 * @return string|null Formatted date or null.
 	 */
 	public function get_last_updated( $format = null ) {
-		if ( ! is_string( $this->last_updated ) || '' === trim( $this->last_updated ) ) {
-			return null;
-		}
-		return Helper::format_date_value( $this->last_updated, $format );
+		return is_string( $this->last_updated ) && '' !== $this->last_updated ? Helper::format_date_value( trim( $this->last_updated ), $format ) : null;
 	}
-
 	/**
 	 * Get the date the asset was added.
 	 *
@@ -418,7 +417,7 @@ class AssetInfo {
 	 * @return string|null Formatted date or null.
 	 */
 	public function get_added( $format = null ) {
-		if ( ! is_string( $this->added ) || '' === trim( $this->added ) ) {
+		if ( ! is_string( $this->added ) || '' === $this->added || '' === trim( $this->added ) ) {
 			return null;
 		}
 		return Helper::format_date_value( $this->added, $format );
@@ -439,7 +438,7 @@ class AssetInfo {
 	 * @return string|null Short description or null.
 	 */
 	public function get_short_description() {
-		return ! empty( $this->short_description ) ? trim( $this->short_description ) : null;
+		return is_string( $this->short_description ) && '' !== $this->short_description ? trim( $this->short_description ) : null;
 	}
 
 	/**
@@ -448,7 +447,7 @@ class AssetInfo {
 	 * @return string|null Full description or null.
 	 */
 	public function get_description() {
-		return ! empty( $this->description ) ? trim( $this->description ) : null;
+		return is_string( $this->description ) && '' !== $this->description ? trim( $this->description ) : null;
 	}
 
 	/**
@@ -518,7 +517,7 @@ class AssetInfo {
 	 * @return string|null Asset origin or null.
 	 */
 	public function get_ac_origin() {
-		return is_string( $this->ac_origin ) && trim( $this->ac_origin ) !== '' ? trim( $this->ac_origin ) : null;
+		return is_string( $this->ac_origin ) && '' !== $this->ac_origin && trim( $this->ac_origin ) !== '' ? trim( $this->ac_origin ) : null;
 	}
 
 	/**
@@ -528,7 +527,7 @@ class AssetInfo {
 	 * @return string|null Formatted date or null.
 	 */
 	public function get_ac_created( $format = null ) {
-		if ( ! is_string( $this->ac_created ) || '' === trim( $this->ac_created ) ) {
+		if ( ! is_string( $this->ac_created ) || '' === $this->ac_created || '' === trim( $this->ac_created ) ) {
 			return null;
 		}
 		if ( empty( $format ) ) {
