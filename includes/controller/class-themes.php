@@ -17,7 +17,11 @@ class Themes extends \AspireExplorer\Model\Singleton {
 	 * Constructor.
 	 */
 	protected function init() {
-		$this->target_page_slug = 'themes';
+		$root = defined( 'AE_ROOT' ) ? trim( AE_ROOT, '/' ) : '';
+		if ( '' !== $root ) {
+			$root .= '/';
+		}
+		$this->target_page_slug = $root . 'themes';
 		add_filter( 'init', [ $this, 'init_permalinks' ] );
 		add_action( 'template_redirect', [ $this, 'template_redirect' ] );
 		add_filter( 'query_vars', [ $this, 'query_vars' ] );
@@ -28,7 +32,7 @@ class Themes extends \AspireExplorer\Model\Singleton {
 	 * Add rewrite rule
 	 */
 	public function init_permalinks() {
-		add_rewrite_rule( '^themes/([^/]+)?$', 'index.php?theme_slug=$matches[1]', 'top' );
+		add_rewrite_rule( '^' . $this->target_page_slug . '/([^/]+)/?$', 'index.php?theme_slug=$matches[1]', 'top' );
 	}
 
 	/**
