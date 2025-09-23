@@ -33,7 +33,7 @@ $total_pages      = $args['total_pages'] ?? 1;
 			?>
 		</span>
 	</div>
-	<div class="theme-results">
+	<ul class="theme-results" role="list">
 		<?php
 		foreach ( $themes_result as $theme_result ) {
 			$theme_info = new \AspireExplorer\Model\ThemeInfo( $theme_result );
@@ -46,7 +46,7 @@ $total_pages      = $args['total_pages'] ?? 1;
 			);
 		}
 		?>
-	</div>
+	</ul>
 	<div class="pagination-wrapper">
 		<?php
 		if ( 1 < $total_pages ) {

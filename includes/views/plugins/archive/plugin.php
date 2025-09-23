@@ -12,8 +12,13 @@ $plugin_icon = $plugin_info->get_best_icon();
 if ( empty( $plugin_icon ) ) {
 	$plugin_icon = AE_DIR_URL . 'assets/images/default-icon.svg';
 }
+
+$fair_data = $plugin_info->get_fair_data();
+if ( $plugin_info->is_fair_plugin() ) {
+	$plugin_did = esc_attr( $fair_data['id'] );
+}
 ?>
-<li class="plugin-card">
+<li class="plugin-card <?php echo ( $plugin_info->is_fair_plugin() ) ? 'fair' : ''; ?>">
 	<header class="entry-header">
 		<div class="entry-thumbnail">
 			<img class="plugin-icon" src="<?php echo esc_url( $plugin_icon ); ?>" alt="<?php echo esc_attr( $plugin_info->get_name() ); ?> <?php esc_attr_e( 'icon', 'aspireexplorer' ); ?>">
@@ -88,5 +93,10 @@ if ( empty( $plugin_icon ) ) {
 				?>
 			</ul>
 		</div>
+		<?php if ( $plugin_info->is_fair_plugin() ) : ?>
+			<div class="fair-badge">
+				<p><?php esc_html_e( 'This plugin is available via FAIR repository.', 'aspireexplorer' ); ?></p>
+			</div>
+		<?php endif; ?>
 	</footer>
 </li>

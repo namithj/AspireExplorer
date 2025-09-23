@@ -1,0 +1,46 @@
+on:
+  push:
+    tags:
+      - "**"
+
+name: Upload Release Asset
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Upload Release Asset
+    runs-on: ubuntu-latest
+    permissions:
+      attestations: write
+      id-token: write
+      contents: write
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
+        with:
+          egress-policy: audit
+
+      - name: Checkout code
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+      - name: Get tag
+        id: tag
+        run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Build project
+        run: git archive -o /tmp/${{ github.event.repository.name }}.zip --prefix=${{ github.event.repository.name }}/ ${{ steps.tag.outputs.tag }}
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@6cbd405e2c4e67a21c47fa9e383d020e4e28b836 # v2.3.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          files: /tmp/${{ github.event.repository.name }}.zip
+
+      - name: Build provenance attestation
+        uses: actions/attest-build-provenance@977bb373ede98d70efdf65b84cb5f73e068dcc2a # v3.0.0
+        with:
+          subject-path: /tmp/${{ github.event.repository.name }}.zip
