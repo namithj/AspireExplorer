@@ -1,6 +1,6 @@
 {
   "name": "aspire-explorer",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "AspirePress Repository browser.",
   "scripts": {
     "build-css": "npx sass assets/css/aspire-explorer.scss assets/css/aspire-explorer.css",
