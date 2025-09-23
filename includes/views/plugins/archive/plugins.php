@@ -33,7 +33,7 @@ $total_pages      = $args['total_pages'] ?? 1;
 			?>
 		</span>
 	</div>
-	<div class="plugin-results">
+	<ul class="plugin-results" role="list">
 		<?php
 		foreach ( $plugins_result as $plugin_result ) {
 			$plugin_info = new \AspireExplorer\Model\PluginInfo( $plugin_result );
@@ -46,7 +46,7 @@ $total_pages      = $args['total_pages'] ?? 1;
 			);
 		}
 		?>
-	</div>
+	</ul>
 	<div class="pagination-wrapper">
 		<?php
 		if ( 1 < $total_pages ) {
