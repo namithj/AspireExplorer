@@ -179,6 +179,13 @@ class AssetInfo {
 	protected $ac_created;
 
 	/**
+	 * Fair protocol data (temporary).
+	 *
+	 * @var bool|null
+	 */
+	protected $_fair;
+
+	/**
 	 * AssetInfo constructor.
 	 *
 	 * @param array $data Optional array of asset fields to auto-populate.
@@ -538,5 +545,36 @@ class AssetInfo {
 			return $this->ac_created;
 		}
 		return gmdate( $format, $date );
+	}
+
+	/**
+	 * Get the fair protocol data (temporary).
+	 *
+	 * @return array|false Data array if fair, false if not.
+	 */
+	public function get_fair_data() {
+		return is_array( $this->_fair ) && ( 0 < count( $this->_fair ) ) ? $this->_fair : false;
+	}
+
+	/**
+	 * Check if this is a FAIR plugin, for legacy data.
+	 *
+	 * FAIR data is bridged into legacy data via the _fair property, and needs
+	 * to have a valid DID. We can use this to enhance our existing metadata.
+	 *
+	 * @return bool
+	 */
+	public function is_fair_plugin() {
+		$fair_data = $this->get_fair_data();
+		if ( false === $fair_data ) {
+			return false;
+		}
+
+		if ( empty( $fair_data['id'] ) ) {
+			return false;
+		}
+
+		// Is this a fake bridged plugin?
+		return str_starts_with( $fair_data['id'], 'did:' );
 	}
 }

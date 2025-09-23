@@ -23,6 +23,11 @@ if ( isset( $sections['description'] ) ) {
 } else {
 	$description = $plugin_info->get_description();
 }
+
+$fair_data = $plugin_info->get_fair_data();
+if ( $plugin_info->is_fair_plugin() ) {
+	$plugin_did = esc_attr( $fair_data['id'] );
+}
 ?>
 <main class="single-plugin-card">
 	<banner class="entry-banner">
@@ -33,6 +38,11 @@ if ( isset( $sections['description'] ) ) {
 			<h2 class="plugin-title"><?php echo esc_html( $plugin_info->get_name() ); ?></h2>
 			<p class="plugin-author">by <?php echo esc_html( $plugin_info->get_author( 'display_name' ) ); ?></p>
 			<p class="plugin-version">Version: <?php echo esc_html( $plugin_info->get_version() ); ?></p>
+			<?php
+			if ( $plugin_info->is_fair_plugin() ) {
+				echo '<p class="plugin-fair">' . esc_html__( 'This plugin is available via FAIR repository.', 'aspireexplorer' ) . '</p>';
+			}
+			?>
 		</div>
 		<div class="entry-download">
 			<a href="<?php echo esc_url( $plugin_info->get_download_link() ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><span class="dashicons dashicons-download"></span> Download</a>
@@ -80,6 +90,11 @@ if ( isset( $sections['description'] ) ) {
 		</article>
 		<sidebar>
 			<ul>
+				<?php
+				if ( $plugin_info->is_fair_plugin() ) {
+					echo '<li class="plugin-meta-item fair-plugin"><strong><span class="screen-reader-text">' . esc_html__( 'Plugin DID:', 'aspireexplorer' ) . '</span>Plugin DID:</strong> <code>' . esc_html( $plugin_did ) . '</code></li>';
+				}
+				?>
 				<?php
 				$meta_data = [
 					'version'         => $plugin_info->get_version(),

@@ -685,6 +685,54 @@
 .archive-theme-card .theme-results .theme-card.theme-card footer {
   justify-content: right;
 }
+.archive-plugin-card .plugin-results .plugin-card.fair,
+.archive-plugin-card .plugin-results .theme-card.fair,
+.archive-plugin-card .theme-results .plugin-card.fair,
+.archive-plugin-card .theme-results .theme-card.fair,
+.archive-theme-card .plugin-results .plugin-card.fair,
+.archive-theme-card .plugin-results .theme-card.fair,
+.archive-theme-card .theme-results .plugin-card.fair,
+.archive-theme-card .theme-results .theme-card.fair {
+  border-top: 4px solid #4caf50;
+}
+.archive-plugin-card .plugin-results .plugin-card.fair:hover,
+.archive-plugin-card .plugin-results .theme-card.fair:hover,
+.archive-plugin-card .theme-results .plugin-card.fair:hover,
+.archive-plugin-card .theme-results .theme-card.fair:hover,
+.archive-theme-card .plugin-results .plugin-card.fair:hover,
+.archive-theme-card .plugin-results .theme-card.fair:hover,
+.archive-theme-card .theme-results .plugin-card.fair:hover,
+.archive-theme-card .theme-results .theme-card.fair:hover {
+  border-color: #4caf50;
+  border-top: 4px solid #388e3c;
+}
+.archive-plugin-card .plugin-results .plugin-card.fair .fair-badge,
+.archive-plugin-card .plugin-results .theme-card.fair .fair-badge,
+.archive-plugin-card .theme-results .plugin-card.fair .fair-badge,
+.archive-plugin-card .theme-results .theme-card.fair .fair-badge,
+.archive-theme-card .plugin-results .plugin-card.fair .fair-badge,
+.archive-theme-card .plugin-results .theme-card.fair .fair-badge,
+.archive-theme-card .theme-results .plugin-card.fair .fair-badge,
+.archive-theme-card .theme-results .theme-card.fair .fair-badge {
+  text-align: right;
+}
+.archive-plugin-card .plugin-results .plugin-card.fair .fair-badge p,
+.archive-plugin-card .plugin-results .theme-card.fair .fair-badge p,
+.archive-plugin-card .theme-results .plugin-card.fair .fair-badge p,
+.archive-plugin-card .theme-results .theme-card.fair .fair-badge p,
+.archive-theme-card .plugin-results .plugin-card.fair .fair-badge p,
+.archive-theme-card .plugin-results .theme-card.fair .fair-badge p,
+.archive-theme-card .theme-results .plugin-card.fair .fair-badge p,
+.archive-theme-card .theme-results .theme-card.fair .fair-badge p {
+  background: #4caf50;
+  color: white;
+  padding: 2px 10px;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  margin: 0 -15px -10px 0;
+  letter-spacing: 1px;
+}
 .archive-plugin-card .pagination-wrapper,
 .archive-theme-card .pagination-wrapper {
   background: none;
@@ -1053,6 +1101,18 @@
   margin: 0;
   font-size: 18px;
   line-height: 20px;
+}
+.single-plugin-card header .entry-title .plugin-fair,
+.single-theme-card header .entry-title .plugin-fair {
+  background: #4caf50;
+  color: white;
+  padding: 2px 10px;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  margin: 0 -15px -10px 0;
+  letter-spacing: 1px;
+  display: inline-block;
 }
 .single-plugin-card header .entry-preview,
 .single-plugin-card header .entry-download,
@@ -1573,6 +1633,14 @@
   float: left;
   max-width: 50%;
   font-weight: 600;
+}
+.single-plugin-card .entry-main sidebar ul li code,
+.single-theme-card .entry-main sidebar ul li code {
+  font-family: monospace, monospace;
+  background: #e0e0e0;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 0.95em;
 }
 .single-plugin-card .entry-main sidebar .ratings,
 .single-theme-card .entry-main sidebar .ratings {
