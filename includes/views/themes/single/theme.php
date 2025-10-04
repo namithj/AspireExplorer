@@ -45,9 +45,7 @@ if ( isset( $sections['description'] ) ) {
 			$preview_url = '';
 			if ( $theme_slug ) {
 				$theme_zip_url = $theme_info->get_download_link();
-				$blueprint_url = AE_DIR_URL . 'includes/views/playground/blueprint.php?theme=' . $theme_zip_url;
-				$cache_buster  = time();
-				$preview_url   = 'https://playground.wordpress.net/?blueprint-url=' . rawurlencode( $blueprint_url ) . '&random=' . $cache_buster;
+				$preview_url   = AspireExplorer\Controller\Playground::get_playground_url( [ 'theme' => $theme_zip_url ] );
 			}
 			?>
 			<a href="<?php echo esc_url( $preview_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer">

@@ -7,9 +7,11 @@ A WordPress plugin that provides a comprehensive repository browser for explorin
 - 🔍 **Plugin Search & Browse** - Search and explore WordPress plugins with detailed information
 - 🎨 **Theme Discovery** - Browse and preview WordPress themes
 - 🛒 **Cart Functionality** - Add plugins/themes to cart with persistent storage via cookies
-- 💫 **Interactive UI** - Modern lightbox galleries, floating cart button, and smooth animations
+- � **WordPress Playground Integration** - Generate blueprint URLs for instant WordPress demos
+- �💫 **Interactive UI** - Modern lightbox galleries, floating cart button, and smooth animations
 - 📱 **Responsive Design** - Mobile-friendly interface with SCSS-powered styling
 - ♿ **Accessibility** - ARIA-compliant components with keyboard navigation support
+- 🔌 **REST API** - REST API endpoints for external integrations
 
 ## Installation
 
@@ -47,6 +49,79 @@ With the default configuration, your URLs will be:
 - Archive: `yoursite.com/packages/themes/`
 - Individual: `yoursite.com/packages/themes/theme-name/`
 
+**REST API:**
+- Playground Blueprint: `yoursite.com/wp-json/aspireexplorer/v1/playground/blueprint`
+
+## REST API Endpoints
+
+### WordPress Playground Blueprint Generator
+
+**Endpoint:** `GET /wp-json/aspireexplorer/v1/playground/blueprint`
+
+Generate WordPress Playground blueprints for instant theme/plugin demos.
+
+#### Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `theme` | string | No | Theme download URL (.zip file, HTTPS only) |
+| `plugin` | string | No | Plugin download URL (.zip file, HTTPS only) |
+| `landing_page` | string | No | Landing page path (default: `/`) |
+| `activate` | boolean | No | Auto-activate asset (default: `true`) |
+| `import_starter_content` | boolean | No | Import theme starter content (default: `true`) |
+
+#### Usage Examples
+
+**Theme Blueprint:**
+```bash
+GET /wp-json/aspireexplorer/v1/playground/blueprint?theme=https://example.com/theme.zip
+```
+
+**Plugin Blueprint:**
+```bash
+GET /wp-json/aspireexplorer/v1/playground/blueprint?plugin=https://example.com/plugin.zip
+```
+
+**Combined Theme + Plugin:**
+```bash
+GET /wp-json/aspireexplorer/v1/playground/blueprint?theme=https://example.com/theme.zip&plugin=https://example.com/plugin.zip&landing_page=/demo
+```
+
+#### Response Format
+
+Returns a JSON blueprint compatible with WordPress Playground:
+
+```json
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/",
+  "features": {
+    "networking": true
+  },
+  "steps": [
+    {
+      "step": "installTheme",
+      "themeData": {
+        "resource": "url",
+        "url": "https://example.com/theme.zip"
+      },
+      "options": {
+        "activate": true,
+        "importStarterContent": true
+      }
+    }
+  ]
+}
+```
+
+#### Security & Validation
+
+- ✅ **HTTPS Only**: Only secure URLs accepted
+- ✅ **File Type Validation**: Only `.zip` files allowed
+- ✅ **Domain Filtering**: Blocks localhost and internal IPs
+- ✅ **Input Sanitization**: All parameters properly sanitized
+- ✅ **CORS Headers**: Cross-origin requests enabled
+
 ## Development
 
 ### Code Structure
@@ -55,15 +130,17 @@ With the default configuration, your URLs will be:
 aspireexplorer/
 ├── includes/
 │   ├── controller/          # MVC Controllers
+│   │   ├── class-main.php
 │   │   ├── class-plugins.php
-│   │   └── class-themes.php
+│   │   ├── class-themes.php
+│   │   └── class-playground.php  # WordPress Playground API
 │   ├── model/              # Data Models
 │   │   ├── class-assetinfo.php
 │   │   ├── class-plugininfo.php
 │   │   └── class-themeinfo.php
-│   └── view/               # Template Files
+│   └── views/              # Template Files
 │       ├── plugins/
-│       └── themes/
+│       ├── themes/
 ├── assets/
 │   ├── js/
 │   │   └── aspire-explorer.js    # Main JavaScript (ES6 classes)
@@ -153,6 +230,23 @@ The cart system allows users to collect plugins/themes for later reference:
 - Check if CSS file is properly enqueued
 - Compile SCSS if using development version
 - Clear any caching plugins
+
+### REST API Issues
+
+**Playground Blueprint Endpoint Not Working:**
+- Verify REST API is enabled (`/wp-json/` accessible)
+- Check WordPress version (requires 4.7+)
+- Ensure plugin is activated and REST routes are registered
+
+**Blueprint Validation Errors:**
+- URLs must be HTTPS only
+- Only `.zip` files are accepted
+- At least one theme or plugin URL must be provided
+- Landing page must start with `/`
+
+**CORS Issues:**
+- REST endpoint includes CORS headers automatically
+- For custom domains, verify server CORS configuration
 
 ## Contributing
 
