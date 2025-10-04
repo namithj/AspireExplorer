@@ -31,13 +31,12 @@ if ( $plugin_info->is_fair_plugin() ) {
 ?>
 <main class="single-plugin-card">
 	<banner class="entry-banner">
-		<img class="plugin-banner" src="<?php echo esc_url( $banner_url ); ?>" alt="Plugin Banner">
+		<img class="plugin-banner" src="<?php echo esc_url( $banner_url ); ?>" alt="Plugin Banner" fetchpriority="high">
 	</banner>
 	<header class="entry-header">
 		<div class="entry-title">
 			<h2 class="plugin-title"><?php echo esc_html( $plugin_info->get_name() ); ?></h2>
 			<p class="plugin-author">by <?php echo esc_html( $plugin_info->get_author( 'display_name' ) ); ?></p>
-			<p class="plugin-version">Version: <?php echo esc_html( $plugin_info->get_version() ); ?></p>
 			<?php
 			if ( $plugin_info->is_fair_plugin() ) {
 				echo '<p class="plugin-fair">' . esc_html__( 'This plugin is available via FAIR repository.', 'aspireexplorer' ) . '</p>';
@@ -45,7 +44,7 @@ if ( $plugin_info->is_fair_plugin() ) {
 			?>
 		</div>
 		<div class="entry-download">
-			<a href="<?php echo esc_url( $plugin_info->get_download_link() ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><span class="dashicons dashicons-download"></span> Download</a>
+			<a href="<?php echo esc_url( $plugin_info->get_download_link() ); ?>" class="button button-primary" download rel="noopener noreferrer"><span class="dashicons dashicons-download"></span> Download</a>
 		</div>
 	</header>
 	<div class="entry-main">
@@ -92,7 +91,7 @@ if ( $plugin_info->is_fair_plugin() ) {
 			<ul>
 				<?php
 				if ( $plugin_info->is_fair_plugin() ) {
-					echo '<li class="plugin-meta-item fair-plugin"><strong><span class="screen-reader-text">' . esc_html__( 'Plugin DID:', 'aspireexplorer' ) . '</span>Plugin DID:</strong> <code>' . esc_html( $plugin_did ) . '</code></li>';
+					echo '<li class="plugin-meta-item fair-plugin"><strong>Plugin DID:</strong> <code>' . esc_html( $plugin_did ) . '</code></li>';
 				}
 				?>
 				<?php
@@ -112,7 +111,7 @@ if ( $plugin_info->is_fair_plugin() ) {
 						$value = implode( ', ', $value );
 					}
 					$label = esc_html( ucfirst( str_replace( '_', ' ', $key ) ) );
-					echo '<li class="plugin-meta-item"><strong><span class="screen-reader-text">' . sprintf( esc_html__( '%s:', 'aspireexplorer' ), $label ) . '</span>' . $label . ':</strong> ' . esc_html( $value ) . '</li>';
+					echo '<li class="plugin-meta-item"><strong>' . $label . ':</strong> ' . esc_html( $value ) . '</li>';
 				}
 				?>
 			</ul>

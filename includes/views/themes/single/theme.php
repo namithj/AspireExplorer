@@ -32,13 +32,12 @@ if ( isset( $sections['description'] ) ) {
 ?>
 <main class="single-theme-card">
 	<banner class="entry-banner">
-		<img class="theme-banner" src="<?php echo esc_url( $theme_screenshot ); ?>" alt="Theme Banner">
+		<img class="theme-banner" src="<?php echo esc_url( $theme_screenshot ); ?>" alt="Theme Banner" fetchpriority="high">
 	</banner>
 	<header class="entry-header">
 		<div class="entry-title">
 			<h2 class="theme-title"><?php echo esc_html( $theme_info->get_name() ); ?></h2>
 			<p class="theme-author">by <?php echo esc_html( $theme_info->get_author( 'display_name' ) ); ?></p>
-			<p class="theme-version">Version: <?php echo esc_html( $theme_info->get_version() ); ?></p>
 		</div>
 		<div class="entry-preview">
 			<?php
@@ -56,7 +55,7 @@ if ( isset( $sections['description'] ) ) {
 			</a>
 		</div>
 		<div class="entry-download">
-			<a href="<?php echo esc_url( $theme_info->get_download_link() ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><span class="dashicons dashicons-download"></span> <?php esc_html_e( 'Download', 'aspireexplorer' ); ?></a>
+			<a href="<?php echo esc_url( $theme_info->get_download_link() ); ?>" class="button button-primary" download rel="noopener noreferrer"><span class="dashicons dashicons-download"></span> <?php esc_html_e( 'Download', 'aspireexplorer' ); ?></a>
 		</div>
 	</header>
 	<div class="entry-main">
@@ -112,7 +111,7 @@ if ( isset( $sections['description'] ) ) {
 						$value = implode( ', ', $value );
 					}
 					$label = esc_html( $key );
-					echo '<li class="theme-meta-item"><strong><span class="screen-reader-text">' . sprintf( esc_html__( '%s:', 'aspireexplorer' ), $label ) . '</span>' . $label . ':</strong> ' . esc_html( $value ) . '</li>';
+					echo '<li class="theme-meta-item"><strong>' . $label . ':</strong> ' . esc_html( $value ) . '</li>';
 				}
 				?>
 			</ul>
@@ -149,7 +148,7 @@ if ( isset( $sections['description'] ) ) {
 				<ul class="theme-tags">
 					<?php
 					foreach ( $theme_info->get_tags() as $theme_tag ) {
-						echo '<li class="theme-tag"><span class="screen-reader-text">' . esc_html__( 'Tag:', 'aspireexplorer' ) . ' </span><span aria-label="' . esc_attr__( 'Tag', 'aspireexplorer' ) . ': ' . esc_attr( $theme_tag ) . '">' . esc_html( $theme_tag ) . '</span></li>';
+						echo '<li class="theme-tag"><span class="screen-reader-text">' . esc_html__( 'Tag:', 'aspireexplorer' ) . ' </span>' . esc_html( $theme_tag ) . '</li>';
 					}
 					?>
 				</ul>
