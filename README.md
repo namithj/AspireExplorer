@@ -4,14 +4,60 @@ A WordPress plugin that provides a comprehensive repository browser for explorin
 
 ## Features
 
-- 🔍 **Plugin Search & Browse** - Search and explore WordPress plugins with detailed information
-- 🎨 **Theme Discovery** - Browse and preview WordPress themes
-- 🛒 **Cart Functionality** - Add plugins/themes to cart with persistent storage via cookies
-- � **WordPress Playground Integration** - Generate blueprint URLs for instant WordPress demos
-- �💫 **Interactive UI** - Modern lightbox galleries, floating cart button, and smooth animations
+- 🔍 **Package Search & Browse** - Search and explore WordPress plugins and themes with detailed information
+- 🎨 **Theme Discovery** - Browse and preview WordPress themes with live demos
+- � **Plugin Management** - Discover and explore WordPress plugins
+- �🛒 **Cart Functionality** - Add packages to cart with persistent storage via cookies
+- 🎮 **WordPress Playground Integration** - Generate blueprint URLs for instant WordPress demos
+- ✨ **Interactive UI** - Modern lightbox galleries, floating cart button, and smooth animations
 - 📱 **Responsive Design** - Mobile-friendly interface with SCSS-powered styling
 - ♿ **Accessibility** - ARIA-compliant components with keyboard navigation support
 - 🔌 **REST API** - REST API endpoints for external integrations
+- 🎨 **Theme Override Support** - Template hierarchy allows theme customization
+
+## Installation
+
+1. Download or clone this repository
+2. Place the `aspireexplorer` folder in your `/wp-content/plugins/` directory
+3. Activate the plugin through the 'Plugins' menu in WordPress
+4. Create pages with slugs `plugins` and `themes` for the archive pages
+
+## Template Hierarchy & Customization
+
+AspireExplorer supports WordPress template hierarchy, allowing themes to override plugin templates:
+
+### Template Override Order
+
+1. **Child Theme** (highest priority): `wp-content/themes/child-theme/aspireexplorer/[template-file]`
+2. **Parent Theme**: `wp-content/themes/active-theme/aspireexplorer/[template-file]`  
+3. **Plugin Default** (fallback): `wp-content/plugins/aspireexplorer/includes/view/[template-file]`
+
+### Available Templates
+
+You can override these template files in your theme:
+
+**Search Forms:**
+- `themes-search-form.php` - Theme search form
+- `plugins-search-form.php` - Plugin search form
+
+**Archive Templates:**
+- `archive/themes.php` - Themes listing page
+- `archive/plugins.php` - Plugins listing page
+
+**Single Templates:**
+- `single/theme.php` - Individual theme display
+- `single/plugin.php` - Individual plugin display
+
+### Example Theme Override
+
+To customize the themes listing in your theme:
+
+1. Create folder: `wp-content/themes/your-theme/aspireexplorer/`
+2. Copy: `wp-content/plugins/aspireexplorer/includes/view/archive/themes.php`
+3. Paste to: `wp-content/themes/your-theme/aspireexplorer/archive/themes.php`
+4. Customize as needed
+
+Your customizations will be preserved during plugin updates.
 
 ## Installation
 
@@ -28,7 +74,7 @@ Add these constants to your `wp-config.php` file:
 
 ```php
 // Root path for URL structure (optional, defaults to empty)
-define( 'AE_ROOT', 'packages/' );
+define( 'AE_ROOT', 'packages/' )
 ```
 
 ### Required Pages
@@ -36,6 +82,7 @@ define( 'AE_ROOT', 'packages/' );
 Create WordPress pages with these exact slugs:
 - **plugins** - For the plugins archive and individual plugin pages
 - **themes** - For the themes archive and individual theme pages
+
 
 ## URL Structure
 
@@ -130,17 +177,24 @@ Returns a JSON blueprint compatible with WordPress Playground:
 aspireexplorer/
 ├── includes/
 │   ├── controller/          # MVC Controllers
-│   │   ├── class-main.php
-│   │   ├── class-plugins.php
-│   │   ├── class-themes.php
-│   │   └── class-playground.php  # WordPress Playground API
-│   ├── model/              # Data Models
-│   │   ├── class-assetinfo.php
-│   │   ├── class-plugininfo.php
-│   │   └── class-themeinfo.php
-│   └── views/              # Template Files
-│       ├── plugins/
-│       ├── themes/
+│   │   ├── class-main.php      # Main plugin controller
+│   │   ├── class-packages.php  # Unified packages controller (themes & plugins)
+│   │   └── class-playground.php # WordPress Playground API
+│   ├── model/              # Data Models  
+│   │   ├── class-singleton.php   # Base singleton pattern
+│   │   ├── class-plugin-info.php # Plugin data model
+│   │   └── class-theme-info.php  # Theme data model
+│   ├── view/               # Template Files (Plugin Defaults)
+│   │   ├── archive/           # Archive page templates
+│   │   │   ├── plugins.php
+│   │   │   └── themes.php
+│   │   ├── single/            # Single item templates  
+│   │   │   ├── plugin.php
+│   │   │   └── theme.php
+│   │   ├── plugins-search-form.php
+│   │   └── themes-search-form.php
+│   ├── class-utilities.php    # Template hierarchy helper
+│   └── autoload.php           # PSR-4 autoloader
 ├── assets/
 │   ├── js/
 │   │   └── aspire-explorer.js    # Main JavaScript (ES6 classes)
@@ -153,6 +207,7 @@ aspireexplorer/
 │       └── aspire-explorer.css   # Compiled CSS
 └── composer.json           # PHP dependencies and scripts
 ```
+
 
 ### JavaScript Classes
 
@@ -204,20 +259,34 @@ This project follows WordPress Coding Standards with:
 
 ## Cart System
 
-The cart system allows users to collect plugins/themes for later reference:
+The cart system allows users to collect packages for later reference:
 
 - **Persistent Storage** - Uses cookies to maintain selections across sessions
-- **Toggle Behavior** - Add/remove items with single button click
+- **Toggle Behavior** - Add/remove packages with single button click
 - **Floating UI** - Minimalist floating cart button with popup
 - **Accessibility** - Full keyboard navigation and screen reader support
+- **Universal Support** - Works with both themes and plugins seamlessly
 
 ## Troubleshooting
+
+### Template Issues
+
+**Templates Not Loading:**
+1. Check file permissions on theme `aspireexplorer` folder
+2. Ensure template files follow exact naming convention
+3. Clear any caching plugins
+
+**Template Hierarchy Not Working:**
+1. Verify theme has `aspireexplorer` folder in correct location
+2. Check file names match exactly (case-sensitive)
+3. Ensure WordPress functions `get_template_directory()` and `get_stylesheet_directory()` work
 
 ### Rewrite Rules Not Working
 
 1. Go to **Settings > Permalinks** and click "Save Changes"
 2. Ensure your pages have the correct slugs (`plugins`, `themes`)
 3. Check that `AE_ROOT` constant matches your URL structure
+4. Verify `Packages` class instances are properly initialized
 
 ### Cart Not Persisting
 
@@ -230,6 +299,19 @@ The cart system allows users to collect plugins/themes for later reference:
 - Check if CSS file is properly enqueued
 - Compile SCSS if using development version
 - Clear any caching plugins
+- Verify theme compatibility
+
+### Package Loading Issues
+
+**Packages Not Displaying:**
+- Check WordPress API functions are available (`themes_api`, `plugins_api`)
+- Verify network connectivity to package repositories
+- Check for PHP errors in WordPress error logs
+
+**Architecture Issues:**
+- Ensure `Packages` class is autoloaded correctly
+- Verify singleton instances are properly created
+- Check factory methods return valid instances
 
 ### REST API Issues
 
