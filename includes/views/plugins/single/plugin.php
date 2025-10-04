@@ -30,9 +30,9 @@ if ( $plugin_info->is_fair_plugin() ) {
 }
 ?>
 <div class="single-plugin-card">
-	<banner class="entry-banner">
-		<img class="plugin-banner" src="<?php echo esc_url( $banner_url ); ?>" alt="Plugin Banner" fetchpriority="high">
-	</banner>
+	<div class="entry-banner">
+		<img class="plugin-banner" src="<?php echo esc_url( $banner_url ); ?>" fetchpriority="high">
+	</div>
 	<header class="entry-header">
 		<div class="entry-title">
 			<h2 class="plugin-title"><?php echo esc_html( $plugin_info->get_name() ); ?></h2>

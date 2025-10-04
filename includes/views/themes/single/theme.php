@@ -31,9 +31,9 @@ if ( isset( $sections['description'] ) ) {
 }
 ?>
 <div class="single-theme-card">
-	<banner class="entry-banner">
-		<img class="theme-banner" src="<?php echo esc_url( $theme_screenshot ); ?>" alt="Theme Banner" fetchpriority="high">
-	</banner>
+	<div class="entry-banner">
+		<img class="theme-banner" src="<?php echo esc_url( $theme_screenshot ); ?>" fetchpriority="high">
+	</div>
 	<header class="entry-header">
 		<div class="entry-title">
 			<h2 class="theme-title"><?php echo esc_html( $theme_info->get_name() ); ?></h2>

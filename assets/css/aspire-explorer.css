@@ -1030,13 +1030,13 @@
   color: #333333;
   margin: 0 auto;
 }
-.single-plugin-card banner,
-.single-theme-card banner {
+.single-plugin-card .entry-banner,
+.single-theme-card .entry-banner {
   display: block;
   margin: 0 0 20px;
 }
-.single-plugin-card banner img,
-.single-theme-card banner img {
+.single-plugin-card .entry-banner img,
+.single-theme-card .entry-banner img {
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -1044,8 +1044,8 @@
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
   max-height: 388px;
 }
-.single-plugin-card banner img.theme-banner,
-.single-theme-card banner img.theme-banner {
+.single-plugin-card .entry-banner img.theme-banner,
+.single-theme-card .entry-banner img.theme-banner {
   aspect-ratio: 1.33/1;
   max-height: 100%;
 }
