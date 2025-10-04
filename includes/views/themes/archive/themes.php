@@ -5,7 +5,7 @@ $current_page     = $args['current_page'] ?? 1;
 $total_results    = $args['total_results'] ?? 0;
 $total_pages      = $args['total_pages'] ?? 1;
 ?>
-<main class="archive-theme-card">
+<div class="archive-theme-card">
 	<div class="theme-results-count">
 		<p id="theme-results-count-text" aria-hidden="true">
 			<?php
@@ -66,4 +66,4 @@ $total_pages      = $args['total_pages'] ?? 1;
 		}
 		?>
 	</div>
-</main>
+</div>

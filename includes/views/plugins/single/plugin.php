@@ -29,7 +29,7 @@ if ( $plugin_info->is_fair_plugin() ) {
 	$plugin_did = esc_attr( $fair_data['id'] );
 }
 ?>
-<main class="single-plugin-card">
+<div class="single-plugin-card">
 	<banner class="entry-banner">
 		<img class="plugin-banner" src="<?php echo esc_url( $banner_url ); ?>" alt="Plugin Banner" fetchpriority="high">
 	</banner>
@@ -146,4 +146,4 @@ if ( $plugin_info->is_fair_plugin() ) {
 			</div>
 		</aside>
 	</div>
-</main>
+</div>
