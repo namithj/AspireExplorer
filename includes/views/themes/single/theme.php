@@ -30,7 +30,7 @@ if ( isset( $sections['description'] ) ) {
 	$description = $theme_info->get_description();
 }
 ?>
-<main class="single-theme-card">
+<div class="single-theme-card">
 	<banner class="entry-banner">
 		<img class="theme-banner" src="<?php echo esc_url( $theme_screenshot ); ?>" alt="Theme Banner" fetchpriority="high">
 	</banner>
@@ -158,4 +158,4 @@ if ( isset( $sections['description'] ) ) {
 			</div>
 		</aside>
 	</div>
-</main>
+</div>
