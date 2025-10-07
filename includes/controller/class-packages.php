@@ -148,6 +148,8 @@ class Packages {
 		 * The individual asset page.
 		 */
 		if ( ! empty( $asset_slug ) ) {
+			global $post;
+
 			$this->api_response = call_user_func(
 				'themes' === $this->asset_type ? 'themes_api' : 'plugins_api',
 				'themes' === $this->asset_type ? 'theme_information' : 'plugin_information',
@@ -156,6 +158,11 @@ class Packages {
 					'fields' => 'all',
 				]
 			);
+			if ( false != $this->api_response && ! is_wp_error( $this->api_response ) ) {
+				$post->post_title   = $this->api_response->name ?? '';
+				$post->post_content = $this->api_response->description ?? '';
+				$post->post_excerpt = $this->api_response->description ?? '';
+			}
 			return;
 		}
 
