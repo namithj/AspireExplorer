@@ -64,6 +64,8 @@ class Packages {
 		add_filter( 'wpseo_opengraph_title', [ $this, 'wpseo_opengraph_title' ] );
 		add_filter( 'wpseo_opengraph_desc', [ $this, 'wpseo_opengraph_desc' ] );
 		add_filter( 'wpseo_opengraph_url', [ $this, 'wpseo_opengraph_url' ] );
+
+		add_action( 'init', [ $this, 'download_package' ] );
 	}
 
 	/**
@@ -411,5 +413,124 @@ class Packages {
 		);
 
 		return ob_get_clean();
+	}
+
+	/**
+	 * Handle download link requests.
+	 */
+	public function download_package() {
+		if ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+			return;
+		}
+
+		if (
+			( ! isset( $_GET['ae_download'] ) && isset( $_GET['ae_package'] ) ) ||
+			( ! isset( $_GET['ae_package'] ) && isset( $_GET['ae_download'] ) )
+		) {
+			wp_die( esc_html( __( 'Aspire Explorer Error: Malformed download URL', 'aspireexplorer' ) ) );
+		}
+
+		if (
+			isset( $_GET['ae_download'] ) &&
+			( '' !== sanitize_text_field( wp_unslash( $_GET['ae_download'] ) ) ) &&
+			isset( $_GET['ae_package'] ) &&
+			( '' !== sanitize_text_field( wp_unslash( $_GET['ae_package'] ) ) )
+		) {
+			if (
+				! isset( $_GET['ae_nonce'] ) ||
+				! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ae_nonce'] ) ), 'ae_download_nonce' )
+			) {
+				wp_die( esc_html( __( 'Aspire Explorer Error: Unidentified download URL', 'aspireexplorer' ) ) );
+			}
+
+			$asset_url = isset( $_GET['ae_download'] ) ? sanitize_text_field( wp_unslash( $_GET['ae_download'] ) ) : '';
+			$filename  = isset( $_GET['ae_package'] ) ? sanitize_text_field( wp_unslash( $_GET['ae_package'] ) ) : '';
+			if ( '' === $asset_url ) {
+				wp_die( esc_html( __( 'Aspire Explorer Error: Missing download URL', 'aspireexplorer' ) ) );
+			}
+
+			if ( ! filter_var( $asset_url, FILTER_VALIDATE_URL ) ) {
+				wp_die( esc_html( __( 'Aspire Explorer Error: Invalid download URL', 'aspireexplorer' ) ) );
+			}
+
+			$accept_header = 'application/octet-stream';
+			if ( str_contains( $asset_url, 'zipball' ) ) {
+				$accept_header = 'application/zip';
+			}
+			if ( str_contains( $asset_url, 'tarball' ) ) {
+				$accept_header = 'application/x-tar';
+			}
+			$response = wp_remote_get(
+				$asset_url,
+				[
+					'headers' => [
+						'Accept' => $accept_header ,
+					],
+					'timeout' => 60,
+				]
+			);
+			if ( is_wp_error( $response ) ) {
+				wp_die( esc_html( __( 'Aspire Explorer Error: Unable to download the file. Please try again later.', 'aspireexplorer' ) ) );
+			}
+			$code = wp_remote_retrieve_response_code( $response );
+			if ( 200 !== $code ) {
+				wp_die( esc_html( __( 'Aspire Explorer Error: Unable to download the file. Please try again later.', 'aspireexplorer' ) . ' (HTTP Code: ' . esc_html( $code ) . ')' ) );
+			}
+			$body = wp_remote_retrieve_body( $response );
+			if ( empty( $body ) ) {
+				wp_die( esc_html( __( 'Aspire Explorer Error: Downloaded file is empty.', 'aspireexplorer' ) ) );
+			}
+
+			// Get file extension from response headers
+			$headers   = wp_remote_retrieve_headers( $response );
+			$extension = '';
+
+			// Try to get extension from Content-Disposition header
+			if ( isset( $headers['content-disposition'] ) ) {
+				if ( preg_match( '/filename[^;=\n]*=(([\'"]).*?\2|[^;\n]*)/', $headers['content-disposition'], $matches ) ) {
+					$header_filename = trim( $matches[1], '"\'' );
+					$extension       = pathinfo( $header_filename, PATHINFO_EXTENSION );
+				}
+			}
+
+			// Fallback: try to get extension from Content-Type header
+			if ( empty( $extension ) && isset( $headers['content-type'] ) ) {
+				$content_type = $headers['content-type'];
+				if ( strpos( $content_type, 'application/zip' ) !== false ) {
+					$extension = 'zip';
+				} elseif ( strpos( $content_type, 'application/x-tar' ) !== false ) {
+					$extension = 'tar';
+				} elseif ( strpos( $content_type, 'application/gzip' ) !== false ) {
+					$extension = 'gz';
+				}
+			}
+
+			// Fallback: try to get extension from URL
+			if ( empty( $extension ) ) {
+				$url_path = wp_parse_url( $asset_url, PHP_URL_PATH );
+				if ( $url_path ) {
+					$extension = pathinfo( $url_path, PATHINFO_EXTENSION );
+				}
+			}
+
+			// Add extension to filename if not already present
+			if ( ! empty( $extension ) && ! str_ends_with( strtolower( $filename ), '.' . strtolower( $extension ) ) ) {
+				$filename .= '.' . $extension;
+			}
+
+			header( 'Content-Description: File Transfer' );
+			header( 'Content-Type: application/octet-stream' );
+			header( 'Content-Disposition: attachment; filename=' . $filename );
+			header( 'Content-Transfer-Encoding: binary' );
+			header( 'Expires: 0' );
+			header( 'Cache-Control: must-revalidate' );
+			header( 'Pragma: public' );
+			header( 'Content-Length: ' . strlen( $body ) );
+			//phpcs:disable
+			// Returning Binary data. Necesary in this scenario
+			echo $body;
+			//phpcs:enable
+			exit;
+		}
 	}
 }
