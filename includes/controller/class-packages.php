@@ -8,8 +8,6 @@
 
 namespace AspireExplorer\Controller;
 
-use AspireExplorer\Utilities;
-
 class Packages {
 	/**
 	 * The page slug where the packages archive page should appear.
@@ -269,7 +267,7 @@ class Packages {
 		ob_start();
 
 		Utilities::include_file(
-			AE_DIR_PATH . '/view/' . $this->asset_type . '-search-form.php',
+			$this->asset_type . DIRECTORY_SEPARATOR . $this->asset_type . '-search-form.php',
 			[
 				'target_page_slug' => $this->target_page_slug,
 				'search_keyword'   => $search_keyword,
