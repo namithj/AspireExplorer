@@ -463,7 +463,25 @@ class AssetInfo {
 	 * @return string|null URL to asset ZIP or null.
 	 */
 	public function get_download_link() {
-		return filter_var( $this->download_link, FILTER_VALIDATE_URL ) ? $this->download_link : null;
+		$download_link = filter_var( $this->download_link, FILTER_VALIDATE_URL ) ? $this->download_link : false;
+		if (
+			false !== $download_link &&
+			'' !== trim( $download_link ) &&
+			(
+				( $this->is_fair_plugin() ) ||
+				( ! str_ends_with( $download_link, '.zip' ) )
+			)
+		) {
+			$download_link = add_query_arg(
+				[
+					'ae_download' => $download_link,
+					'ae_package'  => $this->get_slug(),
+					'ae_nonce'    => wp_create_nonce( 'ae_download_nonce' ),
+				],
+				home_url()
+			);
+		}
+		return $download_link;
 	}
 
 	/**
