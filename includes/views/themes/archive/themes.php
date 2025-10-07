@@ -38,7 +38,7 @@ $total_pages      = $args['total_pages'] ?? 1;
 		foreach ( $themes_result as $theme_result ) {
 			$theme_info = new \AspireExplorer\Model\ThemeInfo( $theme_result );
 			\AspireExplorer\Controller\Utilities::include_file(
-				'themes/archive/theme.php',
+				'themes' . DIRECTORY_SEPARATOR . 'archive' . DIRECTORY_SEPARATOR . 'theme.php',
 				[
 					'target_page_slug' => $target_page_slug,
 					'theme_info'       => $theme_info,
