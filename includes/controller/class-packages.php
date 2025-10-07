@@ -59,6 +59,11 @@ class Packages {
 		add_filter( 'document_title_parts', [ $this, 'document_title_parts' ] );
 		add_filter( 'the_title', [ $this, 'the_title' ] );
 		add_filter( 'the_content', [ $this, 'the_content' ] );
+		add_filter( 'get_canonical_url', [ $this, 'get_canonical_url' ], 10, 1 );
+		add_filter( 'wpseo_canonical', [ $this, 'get_canonical_url' ], 10, 1 );
+		add_filter( 'wpseo_opengraph_title', [ $this, 'wpseo_opengraph_title' ] );
+		add_filter( 'wpseo_opengraph_desc', [ $this, 'wpseo_opengraph_desc' ] );
+		add_filter( 'wpseo_opengraph_url', [ $this, 'wpseo_opengraph_url' ] );
 	}
 
 	/**
@@ -148,6 +153,8 @@ class Packages {
 		 * The individual asset page.
 		 */
 		if ( ! empty( $asset_slug ) ) {
+			global $post;
+
 			$this->api_response = call_user_func(
 				'themes' === $this->asset_type ? 'themes_api' : 'plugins_api',
 				'themes' === $this->asset_type ? 'theme_information' : 'plugin_information',
@@ -156,6 +163,11 @@ class Packages {
 					'fields' => 'all',
 				]
 			);
+			if ( false != $this->api_response && ! is_wp_error( $this->api_response ) ) {
+				$post->post_title   = $this->api_response->name ?? '';
+				$post->post_content = wp_strip_all_tags( $this->api_response->description ?? '' );
+				$post->post_excerpt = wp_strip_all_tags( $this->api_response->description ?? '' );
+			}
 			return;
 		}
 
@@ -237,6 +249,82 @@ class Packages {
 		}
 
 		return $title_parts;
+	}
+
+	/**
+	 * Get canonical URL for asset page.
+	 */
+	public function get_canonical_url( $canonical ) {
+		if ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || is_feed() ) {
+			return $canonical;
+		}
+
+		if ( ! is_page( $this->target_page_slug ) ) {
+			return $canonical;
+		}
+
+		$asset_slug = get_query_var( $this->asset_slug_var );
+		if ( ! empty( $asset_slug ) ) {
+			$page = get_page_by_path( $this->target_page_slug );
+			if ( $page ) {
+				return get_permalink( $page->ID ) . $asset_slug . '/';
+			}
+		}
+		return $canonical;
+	}
+
+	/**
+	 * Get OpenGraph title for asset page.
+	 */
+	public function wpseo_opengraph_title( $title ) {
+		if ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || is_feed() ) {
+			return $title;
+		}
+		if ( ! is_page( $this->target_page_slug ) ) {
+			return $title;
+		}
+		$asset_slug = get_query_var( $this->asset_slug_var );
+		if ( ! empty( $asset_slug ) && isset( $this->api_response->name ) ) {
+			return $this->api_response->name;
+		}
+		return $title;
+	}
+
+	/**
+	 * Get OpenGraph description for asset page.
+	 */
+	public function wpseo_opengraph_desc( $desc ) {
+		if ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || is_feed() ) {
+			return $desc;
+		}
+		if ( ! is_page( $this->target_page_slug ) ) {
+			return $desc;
+		}
+		$asset_slug = get_query_var( $this->asset_slug_var );
+		if ( ! empty( $asset_slug ) && isset( $this->api_response->description ) ) {
+			return wp_strip_all_tags( $this->api_response->description );
+		}
+		return $desc;
+	}
+
+	/**
+	 * Get OpenGraph URL for asset page.
+	 */
+	public function wpseo_opengraph_url( $url ) {
+		if ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || is_feed() ) {
+			return $url;
+		}
+		if ( ! is_page( $this->target_page_slug ) ) {
+			return $url;
+		}
+		$asset_slug = get_query_var( $this->asset_slug_var );
+		if ( ! empty( $asset_slug ) ) {
+			$page = get_page_by_path( $this->target_page_slug );
+			if ( $page ) {
+				return get_permalink( $page->ID ) . $asset_slug . '/';
+			}
+		}
+		return $url;
 	}
 
 	/**
